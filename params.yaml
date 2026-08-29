@@ -1,0 +1,25 @@
+project:
+  status: proposed
+  state_timestamp: post_delivery
+  include_pregame_state: true
+  gender_models:
+    - female
+    - male
+  innings_models:
+    - 1
+    - 2
+  excluded_outcomes:
+    - no_result
+    - tie
+    - dls
+    - super_over
+  team_scope: legacy_top_11_pending_review
+
+validation:
+  split_unit: match_id
+  split_strategy: chronological
+  primary_metric: log_loss
+  calibration_metrics:
+    - brier_score
+    - reliability_curve
+

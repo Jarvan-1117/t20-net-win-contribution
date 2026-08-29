@@ -1,0 +1,27 @@
+name: Repository checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify required project files
+        run: |
+          test -f README.md
+          test -f pyproject.toml
+          test -f params.yaml
+          test -f docs/methodology.md
+          test -f data/raw/manifest.sha256
+      - name: Reject raw data in normal Git
+        run: |
+          if git ls-files 'data/raw/*.csv' | grep -q .; then
+            echo 'Raw CSV files must not be committed to normal Git.'
+            exit 1
+          fi
+
