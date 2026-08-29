@@ -13,7 +13,21 @@ project:
     - tie
     - dls
     - super_over
-  team_scope: legacy_top_11_pending_review
+  # Keep all eligible T20I matches in the baseline.  The legacy notebook's
+  # top-11 filter remains available as a sensitivity analysis, not a default.
+  team_scope: all_teams
+  legacy_top_11:
+    - Sri Lanka
+    - India
+    - South Africa
+    - West Indies
+    - England
+    - New Zealand
+    - Australia
+    - Ireland
+    - Pakistan
+    - Zimbabwe
+    - Bangladesh
 
 validation:
   split_unit: match_id
@@ -22,4 +36,3 @@ validation:
   calibration_metrics:
     - brier_score
     - reliability_curve
-

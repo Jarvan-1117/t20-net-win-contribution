@@ -1,0 +1,42 @@
+{
+  "baseline_eligible_matches": 5212,
+  "exclusions": {
+    "awarded": 4,
+    "dls": 182,
+    "included": 5212,
+    "no_result": 112,
+    "overlong_legal_balls": 41,
+    "tie": 51
+  },
+  "gender_matches": {
+    "female": 2112,
+    "male": 3490
+  },
+  "innings_segments_per_match": {
+    "1": 83,
+    "2": 5473,
+    "4": 45,
+    "8": 1
+  },
+  "join": {
+    "matches_without_deliveries": 0,
+    "unmatched_delivery_rows": 0
+  },
+  "quality_checks": {
+    "duplicate_displayed_coordinate_rows": 124994,
+    "negative_score_delta_rows_within_segment": 0,
+    "negative_wicket_delta_rows_within_segment": 0,
+    "overlong_legal_ball_matches": 41,
+    "runs_total_mismatch_rows": 0,
+    "wicket_flag_player_out_mismatch_rows": 0
+  },
+  "report_version": 1,
+  "source": {
+    "delivery_date_null_rows": 1266835,
+    "delivery_rows": 1266835,
+    "match_date_max": "2026-08-04",
+    "match_date_min": "2005-02-17",
+    "matches_rows": 5602,
+    "matches_with_deliveries": 5602
+  }
+}

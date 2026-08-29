@@ -4,12 +4,14 @@ T20 international cricket ball-by-ball win-probability and player contribution p
 
 ## Current status
 
-The repository is at the project-scaffolding stage. Existing source documents, the legacy feature-engineering notebook, and raw datasets have been organised, but no production modelling code has been implemented.
+Phase 01 is complete: raw-data audit, source-order innings segmentation, and a
+baseline cleaning contract are implemented. No win-probability or NWC model has
+been trained yet.
 
 ## Intended workflow
 
 1. Define the modelling timestamp, match exclusions, team scope, and NWC attribution policy.
-2. Validate and clean match and delivery data.
+2. Validate and clean match and delivery data. **Completed for the initial baseline.**
 3. Build leakage-safe game-state and historical player/team features.
 4. Train and calibrate separate models by gender and innings.
 5. Calculate delivery-level NWC and aggregate it by player, match, season, and career.
@@ -40,6 +42,19 @@ The preferred future setup is Git for code and small metadata, plus DVC for data
 
 The project will use Python 3.12 and `uv` with `pyproject.toml` and a committed `uv.lock`. The current machine did not have `uv` or DVC installed when this scaffold was created, so no lockfile or DVC metadata has been fabricated.
 
+## Phase-01 commands
+
+```bash
+# Audit raw data without changing either source CSV.
+PYTHONPATH=src python -m nwc.pipelines.audit_raw_data
+
+# Run the standard-library unit tests.
+PYTHONPATH=src python -m unittest discover -s tests -v
+```
+
+See `docs/phase_01_data_audit.md` for the cleaning rules and
+`docs/feature_review.md` for the feature decisions.
+
 ## Source material
 
 - `docs/reference/Nett Win Contribution Project Overview.docx`
@@ -49,4 +64,3 @@ The project will use Python 3.12 and `uv` with `pyproject.toml` and a committed 
 ## Licence
 
 Project code and data licensing are not yet declared. Do not make the repository public or redistribute the raw datasets until this is resolved.
-
