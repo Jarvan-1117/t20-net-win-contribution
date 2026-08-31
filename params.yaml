@@ -12,7 +12,15 @@ project:
     - no_result
     - tie
     - dls
+    - awarded
     - super_over
+    - missing_winner
+    - overlong_legal_balls
+    - incomplete_innings
+    - result_target_inconsistency
+    - post_target_deliveries
+    - score_accounting_mismatch
+    - wicket_accounting_mismatch
   # Keep all eligible T20I matches in the baseline.  The legacy notebook's
   # top-11 filter remains available as a sensitivity analysis, not a default.
   team_scope: all_teams
@@ -29,10 +37,68 @@ project:
     - Zimbabwe
     - Bangladesh
 
+features:
+  recent_event_windows:
+    - 10
+  # These are recorded source events, not legal-ball windows. Wides and
+  # no-balls occupy a window position but do not advance the innings clock.
+  recent_window_unit: recorded_event
+  historical:
+    date_rule: strictly_before_match_date
+    equal_date_rule: simultaneous
+    player_identity: exact_display_name_within_gender
+    undefined_rate_policy: null_with_zero_exposure
+    batting_ball_definition: non_wide_event
+    batting_dot_definition: zero_batter_runs_on_non_wide_event
+    boundary_ball_definition: four_or_six_batter_runs_on_non_wide_event
+    bowler_runs_conceded_exclusions:
+      - byes
+      - legbyes
+      - penalty
+    bowler_wicket_exclusions:
+      - run out
+      - obstructing the field
+      - hit the ball twice
+    venue_grouping:
+      - gender
+      - venue
+      - match_innings
+
 validation:
   split_unit: match_id
   split_strategy: chronological
+  equal_date_groups: indivisible
+  train_fraction: 0.70
+  validation_fraction: 0.15
+  test_fraction: 0.15
   primary_metric: log_loss
-  calibration_metrics:
-    - brier_score
-    - reliability_curve
+  secondary_metrics: []
+
+model:
+  candidates:
+    - naive_baseline
+    - logistic_regression
+    - random_forest
+  selection_metric: validation_log_loss
+  final_evaluation_split: test
+  missing_values:
+    strategy: median
+    add_indicator: true
+    fit_scope: training_split_only
+  logistic_regression:
+    penalty: l2
+    C: 1.0
+    solver: liblinear
+    max_iter: 200
+    random_state: 42
+    standardize: true
+  random_forest:
+    n_estimators: 200
+    criterion: log_loss
+    max_depth: 14
+    min_samples_leaf: 50
+    max_features: sqrt
+    max_samples: 0.80
+    bootstrap: true
+    n_jobs: -1
+    random_state: 42

@@ -1,16 +1,25 @@
 {
-  "baseline_eligible_matches": 5212,
+  "baseline_delivery_rows": 1156215,
+  "baseline_eligible_matches": 4975,
+  "cleaned_table": {
+    "columns": 40,
+    "path": "data/interim/phase_01_cleaned_deliveries.csv.gz",
+    "rows": 1156215
+  },
+  "eligible_gender_matches": {
+    "female": 1871,
+    "male": 3104
+  },
   "exclusions": {
     "awarded": 4,
     "dls": 182,
-    "included": 5212,
+    "included": 4975,
+    "incomplete_innings": 233,
     "no_result": 112,
     "overlong_legal_balls": 41,
-    "tie": 51
-  },
-  "gender_matches": {
-    "female": 2112,
-    "male": 3490
+    "post_target_deliveries": 2,
+    "tie": 51,
+    "wicket_accounting_mismatch": 2
   },
   "innings_segments_per_match": {
     "1": 83,
@@ -22,15 +31,21 @@
     "matches_without_deliveries": 0,
     "unmatched_delivery_rows": 0
   },
+  "population": {
+    "team_scope": "all_teams"
+  },
   "quality_checks": {
+    "cumulative_score_mismatch_rows": 0,
+    "cumulative_wicket_mismatch_rows": 2,
     "duplicate_displayed_coordinate_rows": 124994,
-    "negative_score_delta_rows_within_segment": 0,
-    "negative_wicket_delta_rows_within_segment": 0,
     "overlong_legal_ball_matches": 41,
-    "runs_total_mismatch_rows": 0,
+    "post_target_delivery_matches": 14,
+    "result_target_inconsistent_matches": 81,
+    "runs_total_identity_mismatch_rows": 0,
+    "two_innings_incomplete_terminal_matches": 481,
     "wicket_flag_player_out_mismatch_rows": 0
   },
-  "report_version": 1,
+  "report_version": 2,
   "source": {
     "delivery_date_null_rows": 1266835,
     "delivery_rows": 1266835,
@@ -38,5 +53,9 @@
     "match_date_min": "2005-02-17",
     "matches_rows": 5602,
     "matches_with_deliveries": 5602
+  },
+  "source_gender_matches": {
+    "female": 2112,
+    "male": 3490
   }
 }

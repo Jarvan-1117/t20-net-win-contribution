@@ -29,6 +29,9 @@ reports/figures/*
 reports/metrics/*
 !reports/metrics/.gitkeep
 !reports/metrics/phase_01_raw_data_audit.json
+!reports/metrics/phase_02_game_state_features.json
+!reports/metrics/phase_03_historical_features.json
+!reports/metrics/phase_04_model_performance.json
 
 # Local notebook and editor state.
 .jupyter/

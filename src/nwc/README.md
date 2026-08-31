@@ -1,10 +1,8 @@
-# Future package layout
+# Shared helpers (reserved)
 
-- `data/`: loading, schemas, cleaning, and innings segmentation
-- `features/`: state, historical player/team, venue, and resource features
-- `models/`: training, calibration, prediction, and evaluation
-- `metrics/`: NWC calculation, attribution, and aggregation
-- `pipelines/`: reproducible end-to-end orchestration
+The numbered notebooks under `notebooks/` are the primary project code.
+Use this package only after logic is stable and shared by multiple notebooks.
 
-No production code has been added yet.
-
+Do not create a parallel pipeline here for code that belongs to a single
+notebook. Any future helper must have a narrow interface and a corresponding
+test or notebook-level verification cell.

@@ -1,0 +1,1639 @@
+{
+  "models": {
+    "candidate_order": [
+      "naive_baseline",
+      "logistic_regression",
+      "random_forest"
+    ],
+    "logistic_regression": {
+      "C": 1.0,
+      "max_iter": 200,
+      "penalty": "l2",
+      "random_state": 42,
+      "solver": "liblinear",
+      "standardize": true
+    },
+    "naive_baseline": {
+      "probability": "training_outcome_prevalence"
+    },
+    "random_forest": {
+      "bootstrap": true,
+      "criterion": "log_loss",
+      "max_depth": 14,
+      "max_features": "sqrt",
+      "max_samples": 0.8,
+      "min_samples_leaf": 50,
+      "n_estimators": 200,
+      "n_jobs": -1,
+      "random_state": 42
+    },
+    "separate_probability_calibration": null,
+    "sklearn_version": "1.7.2"
+  },
+  "pre_innings_policy": {
+    "included": true,
+    "one_per_match_per_innings_track": true,
+    "state_sequence": 0
+  },
+  "preprocessing": {
+    "logistic_regression_standardisation": "training_split_only",
+    "shared_missing_values": {
+      "add_indicator": true,
+      "fit_scope": "training_split_only",
+      "strategy": "median"
+    }
+  },
+  "quality_checks": {
+    "equal_date_group_isolation": true,
+    "performance_metrics_reported": [
+      "log_loss"
+    ],
+    "probabilities_in_unit_interval": true,
+    "same_gender_innings_share_cutoffs": true,
+    "selection_uses_validation_only": true,
+    "test_evaluated_after_selection": true,
+    "unique_prediction_headers": true,
+    "whole_match_split_isolation": true
+  },
+  "report_version": 2,
+  "source": {
+    "phase_03_metrics_path": "reports/metrics/phase_03_historical_features.json",
+    "tracks": [
+      "female_innings_1",
+      "female_innings_2",
+      "male_innings_1",
+      "male_innings_2"
+    ]
+  },
+  "split_policy": {
+    "equal_date_groups": "indivisible",
+    "final_evaluation_split": "test",
+    "fractions": {
+      "test": 0.15,
+      "train": 0.7,
+      "validation": 0.15
+    },
+    "selection_split": "validation",
+    "strategy": "chronological",
+    "unit": "match_id"
+  },
+  "teacher_requirements": {
+    "candidate_order": [
+      "naive_baseline",
+      "logistic_regression",
+      "random_forest"
+    ],
+    "feature_data_dictionary_required": true,
+    "histogram_based_tree_used": false,
+    "performance_metrics": [
+      "log_loss"
+    ],
+    "secondary_performance_metrics": []
+  },
+  "tracks": {
+    "female_innings_1": {
+      "feature_columns": [
+        "innings_score",
+        "innings_wickets",
+        "wickets_remaining",
+        "cumulative_innings_legal_balls",
+        "legal_deliveries_remaining",
+        "current_run_rate",
+        "powerplay",
+        "middle_overs",
+        "death_overs",
+        "runs_prev_10_events",
+        "wickets_prev_10_events",
+        "striker_prior_batting_matches",
+        "striker_prior_balls_faced",
+        "striker_prior_strike_rate",
+        "striker_prior_batting_average",
+        "striker_prior_boundary_ball_rate",
+        "striker_prior_dot_ball_rate",
+        "non_striker_prior_batting_matches",
+        "non_striker_prior_balls_faced",
+        "non_striker_prior_strike_rate",
+        "non_striker_prior_batting_average",
+        "non_striker_prior_boundary_ball_rate",
+        "non_striker_prior_dot_ball_rate",
+        "bowler_prior_bowling_matches",
+        "bowler_prior_legal_balls",
+        "bowler_prior_economy_rate",
+        "bowler_prior_bowling_strike_rate",
+        "bowler_prior_dot_ball_rate",
+        "batting_team_prior_matches",
+        "batting_team_prior_win_rate",
+        "bowling_team_prior_matches",
+        "bowling_team_prior_win_rate",
+        "venue_innings_prior_matches",
+        "venue_innings_prior_batting_win_rate"
+      ],
+      "feature_count": 34,
+      "missing_indicator_features": [
+        "current_run_rate",
+        "striker_prior_strike_rate",
+        "striker_prior_batting_average",
+        "striker_prior_boundary_ball_rate",
+        "striker_prior_dot_ball_rate",
+        "non_striker_prior_strike_rate",
+        "non_striker_prior_batting_average",
+        "non_striker_prior_boundary_ball_rate",
+        "non_striker_prior_dot_ball_rate",
+        "bowler_prior_economy_rate",
+        "bowler_prior_bowling_strike_rate",
+        "bowler_prior_dot_ball_rate",
+        "batting_team_prior_win_rate",
+        "bowling_team_prior_win_rate",
+        "venue_innings_prior_batting_win_rate"
+      ],
+      "model_paths": {
+        "logistic_regression": "models/logistic_regression_female_innings_1.joblib",
+        "random_forest": "models/random_forest_female_innings_1.joblib",
+        "selected_model": "models/selected_model_female_innings_1.joblib"
+      },
+      "model_state_feature_nulls": {
+        "batting_team_prior_matches": 0,
+        "batting_team_prior_win_rate": 5859,
+        "bowler_prior_bowling_matches": 0,
+        "bowler_prior_bowling_strike_rate": 33846,
+        "bowler_prior_dot_ball_rate": 19639,
+        "bowler_prior_economy_rate": 19639,
+        "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_matches": 0,
+        "bowling_team_prior_win_rate": 7473,
+        "cumulative_innings_legal_balls": 0,
+        "current_run_rate": 2120,
+        "death_overs": 0,
+        "innings_score": 0,
+        "innings_wickets": 0,
+        "legal_deliveries_remaining": 0,
+        "middle_overs": 0,
+        "non_striker_prior_balls_faced": 0,
+        "non_striker_prior_batting_average": 18267,
+        "non_striker_prior_batting_matches": 0,
+        "non_striker_prior_boundary_ball_rate": 14852,
+        "non_striker_prior_dot_ball_rate": 14852,
+        "non_striker_prior_strike_rate": 14852,
+        "powerplay": 0,
+        "runs_prev_10_events": 0,
+        "striker_prior_balls_faced": 0,
+        "striker_prior_batting_average": 18555,
+        "striker_prior_batting_matches": 0,
+        "striker_prior_boundary_ball_rate": 14865,
+        "striker_prior_dot_ball_rate": 14865,
+        "striker_prior_strike_rate": 14865,
+        "venue_innings_prior_batting_win_rate": 45095,
+        "venue_innings_prior_matches": 0,
+        "wickets_prev_10_events": 0,
+        "wickets_remaining": 0
+      },
+      "outcome_prevalence_by_split": {
+        "test": 0.5658308518631898,
+        "train": 0.5067591281511333,
+        "validation": 0.5515990768216288
+      },
+      "performance": {
+        "test_log_loss": {
+          "logistic_regression": 0.5054036194599949,
+          "naive_baseline": 0.6914586154506944,
+          "random_forest": 0.5093492126460828
+        },
+        "validation_log_loss": {
+          "logistic_regression": 0.4740172714557331,
+          "naive_baseline": 0.6918434164570622,
+          "random_forest": 0.48991569804556356
+        }
+      },
+      "pre_innings_states": 1871,
+      "prediction_path": "data/processed/phase_04_female_innings_1_predictions.csv.gz",
+      "selection": {
+        "candidate_order": [
+          "naive_baseline",
+          "logistic_regression",
+          "random_forest"
+        ],
+        "metric": "validation_log_loss",
+        "selected_model": "logistic_regression",
+        "selected_test_log_loss": 0.5054036194599949,
+        "selected_validation_log_loss": 0.4740172714557331
+      },
+      "source_delivery_rows": 235716,
+      "source_feature_nulls": {
+        "batting_team_prior_matches": 0,
+        "batting_team_prior_win_rate": 5811,
+        "bowler_prior_bowling_matches": 0,
+        "bowler_prior_bowling_strike_rate": 33663,
+        "bowler_prior_dot_ball_rate": 19542,
+        "bowler_prior_economy_rate": 19542,
+        "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_matches": 0,
+        "bowling_team_prior_win_rate": 7418,
+        "cumulative_innings_legal_balls": 0,
+        "current_run_rate": 249,
+        "death_overs": 0,
+        "innings_score": 0,
+        "innings_wickets": 0,
+        "legal_deliveries_remaining": 0,
+        "middle_overs": 0,
+        "non_striker_prior_balls_faced": 0,
+        "non_striker_prior_batting_average": 18136,
+        "non_striker_prior_batting_matches": 0,
+        "non_striker_prior_boundary_ball_rate": 14733,
+        "non_striker_prior_dot_ball_rate": 14733,
+        "non_striker_prior_strike_rate": 14733,
+        "powerplay": 0,
+        "runs_prev_10_events": 0,
+        "striker_prior_balls_faced": 0,
+        "striker_prior_batting_average": 18475,
+        "striker_prior_batting_matches": 0,
+        "striker_prior_boundary_ball_rate": 14799,
+        "striker_prior_dot_ball_rate": 14799,
+        "striker_prior_strike_rate": 14799,
+        "venue_innings_prior_batting_win_rate": 44739,
+        "venue_innings_prior_matches": 0,
+        "wickets_prev_10_events": 0,
+        "wickets_remaining": 0
+      },
+      "source_path": "data/interim/phase_03_female_innings_1.csv.gz",
+      "split": {
+        "date_ranges": {
+          "test": {
+            "max": "2026-08-04",
+            "min": "2025-12-21"
+          },
+          "train": {
+            "max": "2025-05-05",
+            "min": "2009-06-18"
+          },
+          "validation": {
+            "max": "2025-12-19",
+            "min": "2025-05-06"
+          }
+        },
+        "match_counts": {
+          "test": 281,
+          "train": 1310,
+          "validation": 280
+        },
+        "train_end_date": "2025-05-05",
+        "validation_end_date": "2025-12-19"
+      },
+      "split_delivery_counts": {
+        "test": 35652,
+        "train": 163948,
+        "validation": 36116
+      },
+      "split_state_counts": {
+        "test": 35933,
+        "train": 165258,
+        "validation": 36396
+      },
+      "states_with_pre_innings": 237587,
+      "top_logistic_coefficients": [
+        {
+          "absolute_coefficient": 1.6820240442882775,
+          "coefficient": 1.6820240442882775,
+          "feature": "innings_score"
+        },
+        {
+          "absolute_coefficient": 1.5697483091923423,
+          "coefficient": -1.5697483091923423,
+          "feature": "bowling_team_prior_matches"
+        },
+        {
+          "absolute_coefficient": 1.0181434371445908,
+          "coefficient": 1.0181434371445908,
+          "feature": "batting_team_prior_matches"
+        },
+        {
+          "absolute_coefficient": 0.5248849444051108,
+          "coefficient": -0.5248849444051108,
+          "feature": "bowling_team_prior_win_rate"
+        },
+        {
+          "absolute_coefficient": 0.49623546450102146,
+          "coefficient": -0.49623546450102146,
+          "feature": "cumulative_innings_legal_balls"
+        },
+        {
+          "absolute_coefficient": 0.49623546450102146,
+          "coefficient": 0.49623546450102146,
+          "feature": "legal_deliveries_remaining"
+        },
+        {
+          "absolute_coefficient": 0.4407103271030624,
+          "coefficient": -0.4407103271030624,
+          "feature": "bowler_prior_bowling_matches"
+        },
+        {
+          "absolute_coefficient": 0.3906411485610256,
+          "coefficient": 0.3906411485610256,
+          "feature": "bowler_prior_legal_balls"
+        },
+        {
+          "absolute_coefficient": 0.38595279911029884,
+          "coefficient": 0.38595279911029884,
+          "feature": "non_striker_prior_strike_rate"
+        },
+        {
+          "absolute_coefficient": 0.3826225161609934,
+          "coefficient": 0.3826225161609934,
+          "feature": "batting_team_prior_win_rate"
+        },
+        {
+          "absolute_coefficient": 0.3090768710098518,
+          "coefficient": 0.3090768710098518,
+          "feature": "current_run_rate"
+        },
+        {
+          "absolute_coefficient": 0.3003190880122064,
+          "coefficient": 0.3003190880122064,
+          "feature": "striker_prior_strike_rate"
+        },
+        {
+          "absolute_coefficient": 0.2602805364313993,
+          "coefficient": 0.2602805364313993,
+          "feature": "bowler_prior_dot_ball_rate"
+        },
+        {
+          "absolute_coefficient": 0.22784777761159572,
+          "coefficient": -0.22784777761159572,
+          "feature": "innings_wickets"
+        },
+        {
+          "absolute_coefficient": 0.22784777761159572,
+          "coefficient": 0.22784777761159572,
+          "feature": "wickets_remaining"
+        }
+      ],
+      "top_random_forest_importances": [
+        {
+          "feature": "current_run_rate",
+          "importance": 0.16020749490392533
+        },
+        {
+          "feature": "bowling_team_prior_win_rate",
+          "importance": 0.10957082317040041
+        },
+        {
+          "feature": "bowling_team_prior_matches",
+          "importance": 0.0992407441458291
+        },
+        {
+          "feature": "batting_team_prior_win_rate",
+          "importance": 0.08303834778246072
+        },
+        {
+          "feature": "batting_team_prior_matches",
+          "importance": 0.05160326963545731
+        },
+        {
+          "feature": "innings_score",
+          "importance": 0.04201222645023824
+        },
+        {
+          "feature": "runs_prev_10_events",
+          "importance": 0.03275222050559133
+        },
+        {
+          "feature": "venue_innings_prior_matches",
+          "importance": 0.02866372237451112
+        },
+        {
+          "feature": "wickets_remaining",
+          "importance": 0.02483813741905964
+        },
+        {
+          "feature": "innings_wickets",
+          "importance": 0.02411986098397404
+        },
+        {
+          "feature": "bowler_prior_legal_balls",
+          "importance": 0.02383299920866764
+        },
+        {
+          "feature": "venue_innings_prior_batting_win_rate",
+          "importance": 0.0213544218302715
+        },
+        {
+          "feature": "non_striker_prior_strike_rate",
+          "importance": 0.020415684334003596
+        },
+        {
+          "feature": "bowler_prior_bowling_matches",
+          "importance": 0.020353884737258292
+        },
+        {
+          "feature": "striker_prior_balls_faced",
+          "importance": 0.01917652978070689
+        }
+      ],
+      "train_imputation_medians": {
+        "batting_team_prior_matches": 25.0,
+        "batting_team_prior_win_rate": 0.5,
+        "bowler_prior_bowling_matches": 9.0,
+        "bowler_prior_bowling_strike_rate": 20.82857142857143,
+        "bowler_prior_dot_ball_rate": 0.4885057471264368,
+        "bowler_prior_economy_rate": 5.592105263157895,
+        "bowler_prior_legal_balls": 162.0,
+        "bowling_team_prior_matches": 23.0,
+        "bowling_team_prior_win_rate": 0.4848484848484848,
+        "cumulative_innings_legal_balls": 58.0,
+        "current_run_rate": 5.386363636363637,
+        "death_overs": 0.0,
+        "innings_score": 49.0,
+        "innings_wickets": 2.0,
+        "legal_deliveries_remaining": 62.0,
+        "middle_overs": 0.0,
+        "non_striker_prior_balls_faced": 178.0,
+        "non_striker_prior_batting_average": 16.6,
+        "non_striker_prior_batting_matches": 12.0,
+        "non_striker_prior_boundary_ball_rate": 0.0843585237258348,
+        "non_striker_prior_dot_ball_rate": 0.4955465587044534,
+        "non_striker_prior_strike_rate": 85.7707509881423,
+        "powerplay": 0.0,
+        "runs_prev_10_events": 8.0,
+        "striker_prior_balls_faced": 176.0,
+        "striker_prior_batting_average": 16.5,
+        "striker_prior_batting_matches": 12.0,
+        "striker_prior_boundary_ball_rate": 0.0845070422535211,
+        "striker_prior_dot_ball_rate": 0.4965831435079726,
+        "striker_prior_strike_rate": 85.71428571428571,
+        "venue_innings_prior_batting_win_rate": 0.5,
+        "venue_innings_prior_matches": 3.0,
+        "wickets_prev_10_events": 0.0,
+        "wickets_remaining": 8.0
+      },
+      "training_prevalence_baseline": 0.5067591281511333
+    },
+    "female_innings_2": {
+      "feature_columns": [
+        "innings_score",
+        "innings_wickets",
+        "wickets_remaining",
+        "cumulative_innings_legal_balls",
+        "legal_deliveries_remaining",
+        "current_run_rate",
+        "powerplay",
+        "middle_overs",
+        "death_overs",
+        "runs_prev_10_events",
+        "wickets_prev_10_events",
+        "target_runs",
+        "runs_to_win",
+        "required_run_rate",
+        "run_rate_differential",
+        "target_progress",
+        "striker_prior_batting_matches",
+        "striker_prior_balls_faced",
+        "striker_prior_strike_rate",
+        "striker_prior_batting_average",
+        "striker_prior_boundary_ball_rate",
+        "striker_prior_dot_ball_rate",
+        "non_striker_prior_batting_matches",
+        "non_striker_prior_balls_faced",
+        "non_striker_prior_strike_rate",
+        "non_striker_prior_batting_average",
+        "non_striker_prior_boundary_ball_rate",
+        "non_striker_prior_dot_ball_rate",
+        "bowler_prior_bowling_matches",
+        "bowler_prior_legal_balls",
+        "bowler_prior_economy_rate",
+        "bowler_prior_bowling_strike_rate",
+        "bowler_prior_dot_ball_rate",
+        "batting_team_prior_matches",
+        "batting_team_prior_win_rate",
+        "bowling_team_prior_matches",
+        "bowling_team_prior_win_rate",
+        "venue_innings_prior_matches",
+        "venue_innings_prior_batting_win_rate"
+      ],
+      "feature_count": 39,
+      "missing_indicator_features": [
+        "current_run_rate",
+        "required_run_rate",
+        "run_rate_differential",
+        "striker_prior_strike_rate",
+        "striker_prior_batting_average",
+        "striker_prior_boundary_ball_rate",
+        "striker_prior_dot_ball_rate",
+        "non_striker_prior_strike_rate",
+        "non_striker_prior_batting_average",
+        "non_striker_prior_boundary_ball_rate",
+        "non_striker_prior_dot_ball_rate",
+        "bowler_prior_economy_rate",
+        "bowler_prior_bowling_strike_rate",
+        "bowler_prior_dot_ball_rate",
+        "batting_team_prior_win_rate",
+        "bowling_team_prior_win_rate",
+        "venue_innings_prior_batting_win_rate"
+      ],
+      "model_paths": {
+        "logistic_regression": "models/logistic_regression_female_innings_2.joblib",
+        "random_forest": "models/random_forest_female_innings_2.joblib",
+        "selected_model": "models/selected_model_female_innings_2.joblib"
+      },
+      "model_state_feature_nulls": {
+        "batting_team_prior_matches": 0,
+        "batting_team_prior_win_rate": 6104,
+        "bowler_prior_bowling_matches": 0,
+        "bowler_prior_bowling_strike_rate": 25250,
+        "bowler_prior_dot_ball_rate": 14922,
+        "bowler_prior_economy_rate": 14922,
+        "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_matches": 0,
+        "bowling_team_prior_win_rate": 4389,
+        "cumulative_innings_legal_balls": 0,
+        "current_run_rate": 2116,
+        "death_overs": 0,
+        "innings_score": 0,
+        "innings_wickets": 0,
+        "legal_deliveries_remaining": 0,
+        "middle_overs": 0,
+        "non_striker_prior_balls_faced": 0,
+        "non_striker_prior_batting_average": 16082,
+        "non_striker_prior_batting_matches": 0,
+        "non_striker_prior_boundary_ball_rate": 13254,
+        "non_striker_prior_dot_ball_rate": 13254,
+        "non_striker_prior_strike_rate": 13254,
+        "powerplay": 0,
+        "required_run_rate": 1503,
+        "run_rate_differential": 3619,
+        "runs_prev_10_events": 0,
+        "runs_to_win": 0,
+        "striker_prior_balls_faced": 0,
+        "striker_prior_batting_average": 16146,
+        "striker_prior_batting_matches": 0,
+        "striker_prior_boundary_ball_rate": 13376,
+        "striker_prior_dot_ball_rate": 13376,
+        "striker_prior_strike_rate": 13376,
+        "target_progress": 0,
+        "target_runs": 0,
+        "venue_innings_prior_batting_win_rate": 38434,
+        "venue_innings_prior_matches": 0,
+        "wickets_prev_10_events": 0,
+        "wickets_remaining": 0
+      },
+      "outcome_prevalence_by_split": {
+        "test": 0.39159598826147246,
+        "train": 0.4463240860625871,
+        "validation": 0.3963826179472687
+      },
+      "performance": {
+        "test_log_loss": {
+          "logistic_regression": 0.27165813566041863,
+          "naive_baseline": 0.6755780781597784,
+          "random_forest": 0.28155462474512283
+        },
+        "validation_log_loss": {
+          "logistic_regression": 0.2761177945546715,
+          "naive_baseline": 0.6766097604840655,
+          "random_forest": 0.28495928482983984
+        }
+      },
+      "pre_innings_states": 1871,
+      "prediction_path": "data/processed/phase_04_female_innings_2_predictions.csv.gz",
+      "selection": {
+        "candidate_order": [
+          "naive_baseline",
+          "logistic_regression",
+          "random_forest"
+        ],
+        "metric": "validation_log_loss",
+        "selected_model": "logistic_regression",
+        "selected_test_log_loss": 0.27165813566041863,
+        "selected_validation_log_loss": 0.2761177945546715
+      },
+      "source_delivery_rows": 200554,
+      "source_feature_nulls": {
+        "batting_team_prior_matches": 0,
+        "batting_team_prior_win_rate": 6049,
+        "bowler_prior_bowling_matches": 0,
+        "bowler_prior_bowling_strike_rate": 25068,
+        "bowler_prior_dot_ball_rate": 14823,
+        "bowler_prior_economy_rate": 14823,
+        "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_matches": 0,
+        "bowling_team_prior_win_rate": 4341,
+        "cumulative_innings_legal_balls": 0,
+        "current_run_rate": 245,
+        "death_overs": 0,
+        "innings_score": 0,
+        "innings_wickets": 0,
+        "legal_deliveries_remaining": 0,
+        "middle_overs": 0,
+        "non_striker_prior_balls_faced": 0,
+        "non_striker_prior_batting_average": 15944,
+        "non_striker_prior_batting_matches": 0,
+        "non_striker_prior_boundary_ball_rate": 13130,
+        "non_striker_prior_dot_ball_rate": 13130,
+        "non_striker_prior_strike_rate": 13130,
+        "powerplay": 0,
+        "required_run_rate": 1503,
+        "run_rate_differential": 1748,
+        "runs_prev_10_events": 0,
+        "runs_to_win": 0,
+        "striker_prior_balls_faced": 0,
+        "striker_prior_batting_average": 16034,
+        "striker_prior_batting_matches": 0,
+        "striker_prior_boundary_ball_rate": 13282,
+        "striker_prior_dot_ball_rate": 13282,
+        "striker_prior_strike_rate": 13282,
+        "target_progress": 0,
+        "target_runs": 0,
+        "venue_innings_prior_batting_win_rate": 38078,
+        "venue_innings_prior_matches": 0,
+        "wickets_prev_10_events": 0,
+        "wickets_remaining": 0
+      },
+      "source_path": "data/interim/phase_03_female_innings_2.csv.gz",
+      "split": {
+        "date_ranges": {
+          "test": {
+            "max": "2026-08-04",
+            "min": "2025-12-21"
+          },
+          "train": {
+            "max": "2025-05-05",
+            "min": "2009-06-18"
+          },
+          "validation": {
+            "max": "2025-12-19",
+            "min": "2025-05-06"
+          }
+        },
+        "match_counts": {
+          "test": 281,
+          "train": 1310,
+          "validation": 280
+        },
+        "train_end_date": "2025-05-05",
+        "validation_end_date": "2025-12-19"
+      },
+      "split_delivery_counts": {
+        "test": 30728,
+        "train": 140029,
+        "validation": 29797
+      },
+      "split_state_counts": {
+        "test": 31009,
+        "train": 141339,
+        "validation": 30077
+      },
+      "states_with_pre_innings": 202425,
+      "top_logistic_coefficients": [
+        {
+          "absolute_coefficient": 5.647964044107558,
+          "coefficient": -5.647964044107558,
+          "feature": "required_run_rate"
+        },
+        {
+          "absolute_coefficient": 3.053215402192939,
+          "coefficient": 3.053215402192939,
+          "feature": "target_progress"
+        },
+        {
+          "absolute_coefficient": 2.2076149611709597,
+          "coefficient": 2.2076149611709597,
+          "feature": "run_rate_differential"
+        },
+        {
+          "absolute_coefficient": 1.421112572026625,
+          "coefficient": -1.421112572026625,
+          "feature": "cumulative_innings_legal_balls"
+        },
+        {
+          "absolute_coefficient": 1.421112572025892,
+          "coefficient": 1.421112572025892,
+          "feature": "legal_deliveries_remaining"
+        },
+        {
+          "absolute_coefficient": 0.736367814282386,
+          "coefficient": -0.736367814282386,
+          "feature": "target_runs"
+        },
+        {
+          "absolute_coefficient": 0.5895416688411798,
+          "coefficient": 0.5895416688411798,
+          "feature": "batting_team_prior_matches"
+        },
+        {
+          "absolute_coefficient": 0.5068388260360442,
+          "coefficient": 0.5068388260360442,
+          "feature": "striker_prior_boundary_ball_rate"
+        },
+        {
+          "absolute_coefficient": 0.48003096774893816,
+          "coefficient": -0.48003096774893816,
+          "feature": "runs_to_win"
+        },
+        {
+          "absolute_coefficient": 0.4665128705103151,
+          "coefficient": -0.4665128705103151,
+          "feature": "striker_prior_strike_rate"
+        },
+        {
+          "absolute_coefficient": 0.4521939910014455,
+          "coefficient": -0.4521939910014455,
+          "feature": "bowling_team_prior_matches"
+        },
+        {
+          "absolute_coefficient": 0.42303694460821933,
+          "coefficient": 0.42303694460821933,
+          "feature": "innings_score"
+        },
+        {
+          "absolute_coefficient": 0.4171114681046913,
+          "coefficient": 0.4171114681046913,
+          "feature": "wickets_remaining"
+        },
+        {
+          "absolute_coefficient": 0.417111468104156,
+          "coefficient": -0.417111468104156,
+          "feature": "innings_wickets"
+        },
+        {
+          "absolute_coefficient": 0.41367447887166126,
+          "coefficient": 0.41367447887166126,
+          "feature": "non_striker_prior_boundary_ball_rate"
+        }
+      ],
+      "top_random_forest_importances": [
+        {
+          "feature": "required_run_rate",
+          "importance": 0.20489884810019784
+        },
+        {
+          "feature": "run_rate_differential",
+          "importance": 0.19196116707644822
+        },
+        {
+          "feature": "target_runs",
+          "importance": 0.10325789100721966
+        },
+        {
+          "feature": "runs_to_win",
+          "importance": 0.0733852886735809
+        },
+        {
+          "feature": "current_run_rate",
+          "importance": 0.0354950444805346
+        },
+        {
+          "feature": "wickets_remaining",
+          "importance": 0.03290663882096399
+        },
+        {
+          "feature": "innings_wickets",
+          "importance": 0.03236285434441005
+        },
+        {
+          "feature": "target_progress",
+          "importance": 0.02809274315474866
+        },
+        {
+          "feature": "bowling_team_prior_win_rate",
+          "importance": 0.02034628072326426
+        },
+        {
+          "feature": "batting_team_prior_win_rate",
+          "importance": 0.01949286510522546
+        },
+        {
+          "feature": "batting_team_prior_matches",
+          "importance": 0.018544623986382576
+        },
+        {
+          "feature": "non_striker_prior_boundary_ball_rate",
+          "importance": 0.016142784467020187
+        },
+        {
+          "feature": "striker_prior_boundary_ball_rate",
+          "importance": 0.015796617625818236
+        },
+        {
+          "feature": "non_striker_prior_strike_rate",
+          "importance": 0.015180809180667297
+        },
+        {
+          "feature": "striker_prior_batting_average",
+          "importance": 0.01458089668037355
+        }
+      ],
+      "train_imputation_medians": {
+        "batting_team_prior_matches": 25.0,
+        "batting_team_prior_win_rate": 0.4819277108433735,
+        "bowler_prior_bowling_matches": 10.0,
+        "bowler_prior_bowling_strike_rate": 20.63157894736842,
+        "bowler_prior_dot_ball_rate": 0.4913793103448275,
+        "bowler_prior_economy_rate": 5.5331564986737405,
+        "bowler_prior_legal_balls": 184.0,
+        "bowling_team_prior_matches": 27.0,
+        "bowling_team_prior_win_rate": 0.5,
+        "cumulative_innings_legal_balls": 51.0,
+        "current_run_rate": 5.130434782608695,
+        "death_overs": 0.0,
+        "innings_score": 42.0,
+        "innings_wickets": 2.0,
+        "legal_deliveries_remaining": 69.0,
+        "middle_overs": 0.0,
+        "non_striker_prior_balls_faced": 169.0,
+        "non_striker_prior_batting_average": 16.3,
+        "non_striker_prior_batting_matches": 11.0,
+        "non_striker_prior_boundary_ball_rate": 0.081967213114754,
+        "non_striker_prior_dot_ball_rate": 0.5,
+        "non_striker_prior_strike_rate": 84.61538461538461,
+        "powerplay": 0.0,
+        "required_run_rate": 6.837959489872468,
+        "run_rate_differential": -1.8746652957179268,
+        "runs_prev_10_events": 8.0,
+        "runs_to_win": 74.0,
+        "striker_prior_balls_faced": 167.0,
+        "striker_prior_batting_average": 16.285714285714285,
+        "striker_prior_batting_matches": 11.0,
+        "striker_prior_boundary_ball_rate": 0.0820895522388059,
+        "striker_prior_dot_ball_rate": 0.5,
+        "striker_prior_strike_rate": 84.60317460317461,
+        "target_progress": 0.3576158940397351,
+        "target_runs": 123.0,
+        "venue_innings_prior_batting_win_rate": 0.5,
+        "venue_innings_prior_matches": 2.0,
+        "wickets_prev_10_events": 0.0,
+        "wickets_remaining": 8.0
+      },
+      "training_prevalence_baseline": 0.4463240860625871
+    },
+    "male_innings_1": {
+      "feature_columns": [
+        "innings_score",
+        "innings_wickets",
+        "wickets_remaining",
+        "cumulative_innings_legal_balls",
+        "legal_deliveries_remaining",
+        "current_run_rate",
+        "powerplay",
+        "middle_overs",
+        "death_overs",
+        "runs_prev_10_events",
+        "wickets_prev_10_events",
+        "striker_prior_batting_matches",
+        "striker_prior_balls_faced",
+        "striker_prior_strike_rate",
+        "striker_prior_batting_average",
+        "striker_prior_boundary_ball_rate",
+        "striker_prior_dot_ball_rate",
+        "non_striker_prior_batting_matches",
+        "non_striker_prior_balls_faced",
+        "non_striker_prior_strike_rate",
+        "non_striker_prior_batting_average",
+        "non_striker_prior_boundary_ball_rate",
+        "non_striker_prior_dot_ball_rate",
+        "bowler_prior_bowling_matches",
+        "bowler_prior_legal_balls",
+        "bowler_prior_economy_rate",
+        "bowler_prior_bowling_strike_rate",
+        "bowler_prior_dot_ball_rate",
+        "batting_team_prior_matches",
+        "batting_team_prior_win_rate",
+        "bowling_team_prior_matches",
+        "bowling_team_prior_win_rate",
+        "venue_innings_prior_matches",
+        "venue_innings_prior_batting_win_rate"
+      ],
+      "feature_count": 34,
+      "missing_indicator_features": [
+        "current_run_rate",
+        "striker_prior_strike_rate",
+        "striker_prior_batting_average",
+        "striker_prior_boundary_ball_rate",
+        "striker_prior_dot_ball_rate",
+        "non_striker_prior_strike_rate",
+        "non_striker_prior_batting_average",
+        "non_striker_prior_boundary_ball_rate",
+        "non_striker_prior_dot_ball_rate",
+        "bowler_prior_economy_rate",
+        "bowler_prior_bowling_strike_rate",
+        "bowler_prior_dot_ball_rate",
+        "batting_team_prior_win_rate",
+        "bowling_team_prior_win_rate",
+        "venue_innings_prior_batting_win_rate"
+      ],
+      "model_paths": {
+        "logistic_regression": "models/logistic_regression_male_innings_1.joblib",
+        "random_forest": "models/random_forest_male_innings_1.joblib",
+        "selected_model": "models/selected_model_male_innings_1.joblib"
+      },
+      "model_state_feature_nulls": {
+        "batting_team_prior_matches": 0,
+        "batting_team_prior_win_rate": 6563,
+        "bowler_prior_bowling_matches": 0,
+        "bowler_prior_bowling_strike_rate": 49505,
+        "bowler_prior_dot_ball_rate": 31977,
+        "bowler_prior_economy_rate": 31977,
+        "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_matches": 0,
+        "bowling_team_prior_win_rate": 8128,
+        "cumulative_innings_legal_balls": 0,
+        "current_run_rate": 3435,
+        "death_overs": 0,
+        "innings_score": 0,
+        "innings_wickets": 0,
+        "legal_deliveries_remaining": 0,
+        "middle_overs": 0,
+        "non_striker_prior_balls_faced": 0,
+        "non_striker_prior_batting_average": 32373,
+        "non_striker_prior_batting_matches": 0,
+        "non_striker_prior_boundary_ball_rate": 26267,
+        "non_striker_prior_dot_ball_rate": 26267,
+        "non_striker_prior_strike_rate": 26267,
+        "powerplay": 0,
+        "runs_prev_10_events": 0,
+        "striker_prior_balls_faced": 0,
+        "striker_prior_batting_average": 31819,
+        "striker_prior_batting_matches": 0,
+        "striker_prior_boundary_ball_rate": 25954,
+        "striker_prior_dot_ball_rate": 25954,
+        "striker_prior_strike_rate": 25954,
+        "venue_innings_prior_batting_win_rate": 47991,
+        "venue_innings_prior_matches": 0,
+        "wickets_prev_10_events": 0,
+        "wickets_remaining": 0
+      },
+      "outcome_prevalence_by_split": {
+        "test": 0.5123066043431016,
+        "train": 0.4916410389417911,
+        "validation": 0.47666080601234184
+      },
+      "performance": {
+        "test_log_loss": {
+          "logistic_regression": 0.5010760094368255,
+          "naive_baseline": 0.693698464599184,
+          "random_forest": 0.5096873736995609
+        },
+        "validation_log_loss": {
+          "logistic_regression": 0.5452996809827684,
+          "naive_baseline": 0.6925065061839741,
+          "random_forest": 0.5662858710056002
+        }
+      },
+      "pre_innings_states": 3104,
+      "prediction_path": "data/processed/phase_04_male_innings_1_predictions.csv.gz",
+      "selection": {
+        "candidate_order": [
+          "naive_baseline",
+          "logistic_regression",
+          "random_forest"
+        ],
+        "metric": "validation_log_loss",
+        "selected_model": "logistic_regression",
+        "selected_test_log_loss": 0.5010760094368255,
+        "selected_validation_log_loss": 0.5452996809827684
+      },
+      "source_delivery_rows": 382777,
+      "source_feature_nulls": {
+        "batting_team_prior_matches": 0,
+        "batting_team_prior_win_rate": 6510,
+        "bowler_prior_bowling_matches": 0,
+        "bowler_prior_bowling_strike_rate": 49198,
+        "bowler_prior_dot_ball_rate": 31769,
+        "bowler_prior_economy_rate": 31769,
+        "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_matches": 0,
+        "bowling_team_prior_win_rate": 8064,
+        "cumulative_innings_legal_balls": 0,
+        "current_run_rate": 331,
+        "death_overs": 0,
+        "innings_score": 0,
+        "innings_wickets": 0,
+        "legal_deliveries_remaining": 0,
+        "middle_overs": 0,
+        "non_striker_prior_balls_faced": 0,
+        "non_striker_prior_batting_average": 32147,
+        "non_striker_prior_batting_matches": 0,
+        "non_striker_prior_boundary_ball_rate": 26061,
+        "non_striker_prior_dot_ball_rate": 26061,
+        "non_striker_prior_strike_rate": 26061,
+        "powerplay": 0,
+        "runs_prev_10_events": 0,
+        "striker_prior_balls_faced": 0,
+        "striker_prior_batting_average": 31655,
+        "striker_prior_batting_matches": 0,
+        "striker_prior_boundary_ball_rate": 25804,
+        "striker_prior_dot_ball_rate": 25804,
+        "striker_prior_strike_rate": 25804,
+        "venue_innings_prior_batting_win_rate": 47605,
+        "venue_innings_prior_matches": 0,
+        "wickets_prev_10_events": 0,
+        "wickets_remaining": 0
+      },
+      "source_path": "data/interim/phase_03_male_innings_1.csv.gz",
+      "split": {
+        "date_ranges": {
+          "test": {
+            "max": "2026-08-01",
+            "min": "2025-10-10"
+          },
+          "train": {
+            "max": "2024-11-08",
+            "min": "2005-02-17"
+          },
+          "validation": {
+            "max": "2025-10-09",
+            "min": "2024-11-09"
+          }
+        },
+        "match_counts": {
+          "test": 466,
+          "train": 2173,
+          "validation": 465
+        },
+        "train_end_date": "2024-11-08",
+        "validation_end_date": "2025-10-09"
+      },
+      "split_delivery_counts": {
+        "test": 57511,
+        "train": 267717,
+        "validation": 57549
+      },
+      "split_state_counts": {
+        "test": 57977,
+        "train": 269890,
+        "validation": 58014
+      },
+      "states_with_pre_innings": 385881,
+      "top_logistic_coefficients": [
+        {
+          "absolute_coefficient": 1.529862743564088,
+          "coefficient": 1.529862743564088,
+          "feature": "innings_score"
+        },
+        {
+          "absolute_coefficient": 1.083783292050622,
+          "coefficient": -1.083783292050622,
+          "feature": "bowling_team_prior_matches"
+        },
+        {
+          "absolute_coefficient": 0.8754552682667532,
+          "coefficient": 0.8754552682667532,
+          "feature": "batting_team_prior_matches"
+        },
+        {
+          "absolute_coefficient": 0.49073496554931506,
+          "coefficient": -0.49073496554931506,
+          "feature": "cumulative_innings_legal_balls"
+        },
+        {
+          "absolute_coefficient": 0.49073496554931506,
+          "coefficient": 0.49073496554931506,
+          "feature": "legal_deliveries_remaining"
+        },
+        {
+          "absolute_coefficient": 0.23827586984150703,
+          "coefficient": 0.23827586984150703,
+          "feature": "wickets_remaining"
+        },
+        {
+          "absolute_coefficient": 0.23827586984150267,
+          "coefficient": -0.23827586984150267,
+          "feature": "innings_wickets"
+        },
+        {
+          "absolute_coefficient": 0.22873915973163247,
+          "coefficient": -0.22873915973163247,
+          "feature": "bowling_team_prior_win_rate"
+        },
+        {
+          "absolute_coefficient": 0.16250862151452478,
+          "coefficient": 0.16250862151452478,
+          "feature": "batting_team_prior_win_rate"
+        },
+        {
+          "absolute_coefficient": 0.14383309005730757,
+          "coefficient": 0.14383309005730757,
+          "feature": "non_striker_prior_strike_rate"
+        },
+        {
+          "absolute_coefficient": 0.13329868762543393,
+          "coefficient": 0.13329868762543393,
+          "feature": "non_striker_prior_batting_matches"
+        },
+        {
+          "absolute_coefficient": 0.12050550549430779,
+          "coefficient": 0.12050550549430779,
+          "feature": "striker_prior_strike_rate"
+        },
+        {
+          "absolute_coefficient": 0.11521517402243762,
+          "coefficient": 0.11521517402243762,
+          "feature": "striker_prior_batting_matches"
+        },
+        {
+          "absolute_coefficient": 0.10481443706330505,
+          "coefficient": 0.10481443706330505,
+          "feature": "current_run_rate"
+        },
+        {
+          "absolute_coefficient": 0.10129130330449143,
+          "coefficient": 0.10129130330449143,
+          "feature": "missingindicator_bowling_team_prior_win_rate"
+        }
+      ],
+      "top_random_forest_importances": [
+        {
+          "feature": "current_run_rate",
+          "importance": 0.15911465471347497
+        },
+        {
+          "feature": "bowling_team_prior_win_rate",
+          "importance": 0.08351125993456097
+        },
+        {
+          "feature": "bowling_team_prior_matches",
+          "importance": 0.08330091155520487
+        },
+        {
+          "feature": "batting_team_prior_win_rate",
+          "importance": 0.06781473635854043
+        },
+        {
+          "feature": "batting_team_prior_matches",
+          "importance": 0.06064856369560965
+        },
+        {
+          "feature": "innings_score",
+          "importance": 0.05343874128127
+        },
+        {
+          "feature": "venue_innings_prior_matches",
+          "importance": 0.03183928978577471
+        },
+        {
+          "feature": "runs_prev_10_events",
+          "importance": 0.03165505762421019
+        },
+        {
+          "feature": "innings_wickets",
+          "importance": 0.03088223320407615
+        },
+        {
+          "feature": "wickets_remaining",
+          "importance": 0.029551567627650883
+        },
+        {
+          "feature": "venue_innings_prior_batting_win_rate",
+          "importance": 0.029521196271482947
+        },
+        {
+          "feature": "striker_prior_boundary_ball_rate",
+          "importance": 0.026239194096155476
+        },
+        {
+          "feature": "non_striker_prior_boundary_ball_rate",
+          "importance": 0.025189411126744922
+        },
+        {
+          "feature": "non_striker_prior_strike_rate",
+          "importance": 0.02246913019264068
+        },
+        {
+          "feature": "striker_prior_strike_rate",
+          "importance": 0.02218352625039718
+        }
+      ],
+      "train_imputation_medians": {
+        "batting_team_prior_matches": 31.0,
+        "batting_team_prior_win_rate": 0.5147058823529411,
+        "bowler_prior_bowling_matches": 8.0,
+        "bowler_prior_bowling_strike_rate": 18.5,
+        "bowler_prior_dot_ball_rate": 0.4024266936299292,
+        "bowler_prior_economy_rate": 7.184210526315789,
+        "bowler_prior_legal_balls": 162.0,
+        "bowling_team_prior_matches": 30.0,
+        "bowling_team_prior_win_rate": 0.5128205128205128,
+        "cumulative_innings_legal_balls": 59.0,
+        "current_run_rate": 6.947368421052632,
+        "death_overs": 0.0,
+        "innings_score": 65.0,
+        "innings_wickets": 2.0,
+        "legal_deliveries_remaining": 61.0,
+        "middle_overs": 0.0,
+        "non_striker_prior_balls_faced": 151.0,
+        "non_striker_prior_batting_average": 22.416666666666668,
+        "non_striker_prior_batting_matches": 10.0,
+        "non_striker_prior_boundary_ball_rate": 0.1425120772946859,
+        "non_striker_prior_dot_ball_rate": 0.402834008097166,
+        "non_striker_prior_strike_rate": 119.40298507462688,
+        "powerplay": 0.0,
+        "runs_prev_10_events": 11.0,
+        "striker_prior_balls_faced": 151.0,
+        "striker_prior_batting_average": 22.4,
+        "striker_prior_batting_matches": 10.0,
+        "striker_prior_boundary_ball_rate": 0.1428571428571428,
+        "striker_prior_dot_ball_rate": 0.4032983508245877,
+        "striker_prior_strike_rate": 119.64735516372797,
+        "venue_innings_prior_batting_win_rate": 0.5,
+        "venue_innings_prior_matches": 5.0,
+        "wickets_prev_10_events": 0.0,
+        "wickets_remaining": 8.0
+      },
+      "training_prevalence_baseline": 0.4916410389417911
+    },
+    "male_innings_2": {
+      "feature_columns": [
+        "innings_score",
+        "innings_wickets",
+        "wickets_remaining",
+        "cumulative_innings_legal_balls",
+        "legal_deliveries_remaining",
+        "current_run_rate",
+        "powerplay",
+        "middle_overs",
+        "death_overs",
+        "runs_prev_10_events",
+        "wickets_prev_10_events",
+        "target_runs",
+        "runs_to_win",
+        "required_run_rate",
+        "run_rate_differential",
+        "target_progress",
+        "striker_prior_batting_matches",
+        "striker_prior_balls_faced",
+        "striker_prior_strike_rate",
+        "striker_prior_batting_average",
+        "striker_prior_boundary_ball_rate",
+        "striker_prior_dot_ball_rate",
+        "non_striker_prior_batting_matches",
+        "non_striker_prior_balls_faced",
+        "non_striker_prior_strike_rate",
+        "non_striker_prior_batting_average",
+        "non_striker_prior_boundary_ball_rate",
+        "non_striker_prior_dot_ball_rate",
+        "bowler_prior_bowling_matches",
+        "bowler_prior_legal_balls",
+        "bowler_prior_economy_rate",
+        "bowler_prior_bowling_strike_rate",
+        "bowler_prior_dot_ball_rate",
+        "batting_team_prior_matches",
+        "batting_team_prior_win_rate",
+        "bowling_team_prior_matches",
+        "bowling_team_prior_win_rate",
+        "venue_innings_prior_matches",
+        "venue_innings_prior_batting_win_rate"
+      ],
+      "feature_count": 39,
+      "missing_indicator_features": [
+        "current_run_rate",
+        "required_run_rate",
+        "run_rate_differential",
+        "striker_prior_strike_rate",
+        "striker_prior_batting_average",
+        "striker_prior_boundary_ball_rate",
+        "striker_prior_dot_ball_rate",
+        "non_striker_prior_strike_rate",
+        "non_striker_prior_batting_average",
+        "non_striker_prior_boundary_ball_rate",
+        "non_striker_prior_dot_ball_rate",
+        "bowler_prior_economy_rate",
+        "bowler_prior_bowling_strike_rate",
+        "bowler_prior_dot_ball_rate",
+        "batting_team_prior_win_rate",
+        "bowling_team_prior_win_rate",
+        "venue_innings_prior_batting_win_rate"
+      ],
+      "model_paths": {
+        "logistic_regression": "models/logistic_regression_male_innings_2.joblib",
+        "random_forest": "models/random_forest_male_innings_2.joblib",
+        "selected_model": "models/selected_model_male_innings_2.joblib"
+      },
+      "model_state_feature_nulls": {
+        "batting_team_prior_matches": 0,
+        "batting_team_prior_win_rate": 7266,
+        "bowler_prior_bowling_matches": 0,
+        "bowler_prior_bowling_strike_rate": 40445,
+        "bowler_prior_dot_ball_rate": 26949,
+        "bowler_prior_economy_rate": 26949,
+        "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_matches": 0,
+        "bowling_team_prior_win_rate": 5239,
+        "cumulative_innings_legal_balls": 0,
+        "current_run_rate": 3406,
+        "death_overs": 0,
+        "innings_score": 0,
+        "innings_wickets": 0,
+        "legal_deliveries_remaining": 0,
+        "middle_overs": 0,
+        "non_striker_prior_balls_faced": 0,
+        "non_striker_prior_batting_average": 27911,
+        "non_striker_prior_batting_matches": 0,
+        "non_striker_prior_boundary_ball_rate": 23052,
+        "non_striker_prior_dot_ball_rate": 23052,
+        "non_striker_prior_strike_rate": 23052,
+        "powerplay": 0,
+        "required_run_rate": 2483,
+        "run_rate_differential": 5889,
+        "runs_prev_10_events": 0,
+        "runs_to_win": 0,
+        "striker_prior_balls_faced": 0,
+        "striker_prior_batting_average": 28033,
+        "striker_prior_batting_matches": 0,
+        "striker_prior_boundary_ball_rate": 23264,
+        "striker_prior_dot_ball_rate": 23264,
+        "striker_prior_strike_rate": 23264,
+        "target_progress": 0,
+        "target_runs": 0,
+        "venue_innings_prior_batting_win_rate": 43384,
+        "venue_innings_prior_matches": 0,
+        "wickets_prev_10_events": 0,
+        "wickets_remaining": 0
+      },
+      "outcome_prevalence_by_split": {
+        "test": 0.4419382624546784,
+        "train": 0.4729651320540489,
+        "validation": 0.4882260287458161
+      },
+      "performance": {
+        "test_log_loss": {
+          "logistic_regression": 0.28590698209843346,
+          "naive_baseline": 0.6883261945519699,
+          "random_forest": 0.29719727078500047
+        },
+        "validation_log_loss": {
+          "logistic_regression": 0.29063566654082396,
+          "naive_baseline": 0.6933366156772774,
+          "random_forest": 0.3181524668926533
+        }
+      },
+      "pre_innings_states": 3104,
+      "prediction_path": "data/processed/phase_04_male_innings_2_predictions.csv.gz",
+      "selection": {
+        "candidate_order": [
+          "naive_baseline",
+          "logistic_regression",
+          "random_forest"
+        ],
+        "metric": "validation_log_loss",
+        "selected_model": "logistic_regression",
+        "selected_test_log_loss": 0.28590698209843346,
+        "selected_validation_log_loss": 0.29063566654082396
+      },
+      "source_delivery_rows": 337168,
+      "source_feature_nulls": {
+        "batting_team_prior_matches": 0,
+        "batting_team_prior_win_rate": 7202,
+        "bowler_prior_bowling_matches": 0,
+        "bowler_prior_bowling_strike_rate": 40154,
+        "bowler_prior_dot_ball_rate": 26752,
+        "bowler_prior_economy_rate": 26752,
+        "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_matches": 0,
+        "bowling_team_prior_win_rate": 5186,
+        "cumulative_innings_legal_balls": 0,
+        "current_run_rate": 302,
+        "death_overs": 0,
+        "innings_score": 0,
+        "innings_wickets": 0,
+        "legal_deliveries_remaining": 0,
+        "middle_overs": 0,
+        "non_striker_prior_balls_faced": 0,
+        "non_striker_prior_batting_average": 27703,
+        "non_striker_prior_batting_matches": 0,
+        "non_striker_prior_boundary_ball_rate": 22857,
+        "non_striker_prior_dot_ball_rate": 22857,
+        "non_striker_prior_strike_rate": 22857,
+        "powerplay": 0,
+        "required_run_rate": 2483,
+        "run_rate_differential": 2785,
+        "runs_prev_10_events": 0,
+        "runs_to_win": 0,
+        "striker_prior_balls_faced": 0,
+        "striker_prior_batting_average": 27859,
+        "striker_prior_batting_matches": 0,
+        "striker_prior_boundary_ball_rate": 23099,
+        "striker_prior_dot_ball_rate": 23099,
+        "striker_prior_strike_rate": 23099,
+        "target_progress": 0,
+        "target_runs": 0,
+        "venue_innings_prior_batting_win_rate": 42998,
+        "venue_innings_prior_matches": 0,
+        "wickets_prev_10_events": 0,
+        "wickets_remaining": 0
+      },
+      "source_path": "data/interim/phase_03_male_innings_2.csv.gz",
+      "split": {
+        "date_ranges": {
+          "test": {
+            "max": "2026-08-01",
+            "min": "2025-10-10"
+          },
+          "train": {
+            "max": "2024-11-08",
+            "min": "2005-02-17"
+          },
+          "validation": {
+            "max": "2025-10-09",
+            "min": "2024-11-09"
+          }
+        },
+        "match_counts": {
+          "test": 466,
+          "train": 2173,
+          "validation": 465
+        },
+        "train_end_date": "2024-11-08",
+        "validation_end_date": "2025-10-09"
+      },
+      "split_delivery_counts": {
+        "test": 49455,
+        "train": 237388,
+        "validation": 50325
+      },
+      "split_state_counts": {
+        "test": 49921,
+        "train": 239561,
+        "validation": 50790
+      },
+      "states_with_pre_innings": 340272,
+      "top_logistic_coefficients": [
+        {
+          "absolute_coefficient": 4.725642935435184,
+          "coefficient": -4.725642935435184,
+          "feature": "required_run_rate"
+        },
+        {
+          "absolute_coefficient": 2.734926517705217,
+          "coefficient": 2.734926517705217,
+          "feature": "target_progress"
+        },
+        {
+          "absolute_coefficient": 1.2403440928373166,
+          "coefficient": 1.2403440928373166,
+          "feature": "innings_score"
+        },
+        {
+          "absolute_coefficient": 1.2138000602218304,
+          "coefficient": -1.2138000602218304,
+          "feature": "target_runs"
+        },
+        {
+          "absolute_coefficient": 1.167320064461647,
+          "coefficient": 1.167320064461647,
+          "feature": "legal_deliveries_remaining"
+        },
+        {
+          "absolute_coefficient": 1.1673200644608626,
+          "coefficient": -1.1673200644608626,
+          "feature": "cumulative_innings_legal_balls"
+        },
+        {
+          "absolute_coefficient": 0.5715685059532012,
+          "coefficient": -0.5715685059532012,
+          "feature": "innings_wickets"
+        },
+        {
+          "absolute_coefficient": 0.5715685059532012,
+          "coefficient": 0.5715685059532012,
+          "feature": "wickets_remaining"
+        },
+        {
+          "absolute_coefficient": 0.5517160922964212,
+          "coefficient": 0.5517160922964212,
+          "feature": "batting_team_prior_matches"
+        },
+        {
+          "absolute_coefficient": 0.5073669748087536,
+          "coefficient": -0.5073669748087536,
+          "feature": "bowling_team_prior_matches"
+        },
+        {
+          "absolute_coefficient": 0.48091523906794353,
+          "coefficient": 0.48091523906794353,
+          "feature": "runs_to_win"
+        },
+        {
+          "absolute_coefficient": 0.2387488375855567,
+          "coefficient": 0.2387488375855567,
+          "feature": "striker_prior_boundary_ball_rate"
+        },
+        {
+          "absolute_coefficient": 0.21302657172263262,
+          "coefficient": -0.21302657172263262,
+          "feature": "bowler_prior_bowling_matches"
+        },
+        {
+          "absolute_coefficient": 0.21201372547635483,
+          "coefficient": 0.21201372547635483,
+          "feature": "bowler_prior_legal_balls"
+        },
+        {
+          "absolute_coefficient": 0.20840765329844707,
+          "coefficient": 0.20840765329844707,
+          "feature": "non_striker_prior_boundary_ball_rate"
+        }
+      ],
+      "top_random_forest_importances": [
+        {
+          "feature": "required_run_rate",
+          "importance": 0.22789963755206927
+        },
+        {
+          "feature": "run_rate_differential",
+          "importance": 0.17579240895175538
+        },
+        {
+          "feature": "target_runs",
+          "importance": 0.10336229143245136
+        },
+        {
+          "feature": "runs_to_win",
+          "importance": 0.06450099682824789
+        },
+        {
+          "feature": "wickets_remaining",
+          "importance": 0.04704181505742189
+        },
+        {
+          "feature": "innings_wickets",
+          "importance": 0.0449966128468684
+        },
+        {
+          "feature": "target_progress",
+          "importance": 0.03682108056886104
+        },
+        {
+          "feature": "current_run_rate",
+          "importance": 0.025730425130265588
+        },
+        {
+          "feature": "bowling_team_prior_win_rate",
+          "importance": 0.017980524255173314
+        },
+        {
+          "feature": "batting_team_prior_matches",
+          "importance": 0.016182285804834138
+        },
+        {
+          "feature": "bowling_team_prior_matches",
+          "importance": 0.01561377065017679
+        },
+        {
+          "feature": "batting_team_prior_win_rate",
+          "importance": 0.015225792740287483
+        },
+        {
+          "feature": "legal_deliveries_remaining",
+          "importance": 0.013773765914533937
+        },
+        {
+          "feature": "non_striker_prior_boundary_ball_rate",
+          "importance": 0.013249863753631868
+        },
+        {
+          "feature": "striker_prior_boundary_ball_rate",
+          "importance": 0.012694446720705098
+        }
+      ],
+      "train_imputation_medians": {
+        "batting_team_prior_matches": 30.0,
+        "batting_team_prior_win_rate": 0.5128205128205128,
+        "bowler_prior_bowling_matches": 9.0,
+        "bowler_prior_bowling_strike_rate": 18.395833333333332,
+        "bowler_prior_dot_ball_rate": 0.4018499486125385,
+        "bowler_prior_economy_rate": 7.142857142857143,
+        "bowler_prior_legal_balls": 165.0,
+        "bowling_team_prior_matches": 33.0,
+        "bowling_team_prior_win_rate": 0.5178571428571429,
+        "cumulative_innings_legal_balls": 53.0,
+        "current_run_rate": 6.916666666666667,
+        "death_overs": 0.0,
+        "innings_score": 59.0,
+        "innings_wickets": 2.0,
+        "legal_deliveries_remaining": 67.0,
+        "middle_overs": 0.0,
+        "non_striker_prior_balls_faced": 150.0,
+        "non_striker_prior_batting_average": 22.25,
+        "non_striker_prior_batting_matches": 10.0,
+        "non_striker_prior_boundary_ball_rate": 0.1427304964539007,
+        "non_striker_prior_dot_ball_rate": 0.4078624078624078,
+        "non_striker_prior_strike_rate": 118.92583120204604,
+        "powerplay": 0.0,
+        "required_run_rate": 8.41304347826087,
+        "run_rate_differential": -1.7022132796780678,
+        "runs_prev_10_events": 10.0,
+        "runs_to_win": 89.0,
+        "striker_prior_balls_faced": 151.0,
+        "striker_prior_batting_average": 22.22222222222222,
+        "striker_prior_batting_matches": 10.0,
+        "striker_prior_boundary_ball_rate": 0.1428571428571428,
+        "striker_prior_dot_ball_rate": 0.4078947368421052,
+        "striker_prior_strike_rate": 119.33701657458565,
+        "target_progress": 0.3989637305699481,
+        "target_runs": 155.0,
+        "venue_innings_prior_batting_win_rate": 0.5,
+        "venue_innings_prior_matches": 5.0,
+        "wickets_prev_10_events": 0.0,
+        "wickets_remaining": 8.0
+      },
+      "training_prevalence_baseline": 0.4729651320540489
+    }
+  }
+}
