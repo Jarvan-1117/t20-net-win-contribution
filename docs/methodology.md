@@ -1,42 +1,128 @@
 # Methodology
 
-Status: Draft
+This is the authoritative technical summary for Phases 01–05. Implementation,
+cell-level commentary, and executed outputs remain in the numbered notebooks.
 
-## Objective
+## 1. Objective and modelling structure
 
-Estimate the batting team's calibrated probability of winning after each delivery, then use successive probability changes to derive player-level Net Win Contribution.
+The model estimates a selected team's probability of winning after every
+recorded delivery in a T20 international. Successive changes in that probability
+are then assigned to the participating striker and bowler as Net Win
+Contribution (NWC).
 
-## Proposed modelling units
+Four independent modelling tracks are used:
 
-- One post-delivery state per recorded event.
-- One synthetic pre-innings state for the initial probability.
-- Separate models by gender and match innings.
-- Chronological validation with entire matches and equal-date match groups kept within one split.
+- female, first innings;
+- female, second innings;
+- male, first innings;
+- male, second innings.
 
-## NWC attribution
+Keeping these datasets and models separate allows innings-specific relationships
+without leaking chase information into first-innings observations.
 
-Phase 05 implements the approved baseline striker-bowler interaction. Within
-an innings, the striker receives the selected batting-side probability change
-from one recorded event to the next and the bowler receives its negative. The
-first event uses the explicit pre-innings state. The innings boundary is not
-attributed, and terminal probabilities are not overridden. Main player
-rankings are limited to the untouched test split. See ADR 0003 and
-`docs/phase_05_nwc_attribution.md`.
+## 2. Data audit and event order
 
-## Remaining decisions
+Match and delivery sources are joined by `match_id`. The retained `source_row`
+defines event order because displayed over/ball labels are not unique for every
+recorded event. Innings are reconstructed from this ordered stream.
 
-- Final team and competition scope.
-- Playing-XI source and remaining-resource methodology.
-- Treatment of DLS, ties, no-results, and super overs beyond the initial exclusions.
-- Definition of model endpoints and terminal probabilities.
+The baseline excludes D/L-affected matches, ties, no-results, awarded matches,
+super overs, missing or inconsistent winners, innings longer than 120 legal
+deliveries, and terminal states inconsistent with the match record. This leaves
+4,975 eligible matches and 1,156,215 recorded events from 5,602 source matches.
 
-Phase 01 currently yields 4,975 eligible matches. Phase 02 materialises four
-gender-by-innings tracks and excludes chase-only fields from both first-innings
-schemas. Phase 03 adds strictly prior-date player, team, and venue histories;
-same-date matches are simultaneous and undefined rates remain null. The
-Phase 04 compares, in order, a training-prevalence naïve baseline, standalone
-logistic regression, and random forest. It adds synthetic pre-innings states,
-chronological 70/15/15 date-group splits, training-only preprocessing, selection
-by validation log loss, and untouched test evaluation. Logistic regression is
-selected in all four tracks. Following instructor guidance, log loss is the
-only Phase 04 performance metric.
+## 3. Game-state features
+
+Each row represents the state immediately after a recorded event. Core features
+include cumulative runs and wickets, legal deliveries completed and remaining,
+current run rate, innings phase, and runs/wickets from the previous ten recorded
+events. A synthetic pre-innings state supplies the probability immediately
+before the first event.
+
+Second-innings-only features include target score, runs required, required run
+rate, current-minus-required run-rate difference, and target progress. These
+columns are physically absent from both first-innings tables.
+
+## 4. Historical features and leakage controls
+
+Phase 03 appends 25 player, team, and venue predictors. They cover prior batting
+exposure and rates for the striker and non-striker, prior bowling economy,
+strike and dot-ball rates, team win history, venue history, and exponentially
+weighted recent team form.
+
+All history is calculated using matches with dates strictly earlier than the
+current match. Matches on the same date are treated as simultaneous and cannot
+update one another. Recent team form uses a 10-match half-life. Undefined rates
+for unseen players, teams, or venues remain null until model preprocessing.
+
+`batting_team` and `bowling_team` are also included as categorical predictors.
+Their encoding is learned from the training split only; unknown later teams are
+handled without inspecting validation or test data.
+
+## 5. Training and model selection
+
+Complete matches and complete date groups are kept together in chronological
+70%/15%/15% train, validation, and test partitions. Numeric median imputation,
+missing-value indicators, scaling where applicable, and categorical one-hot
+encoding are fitted only on training data.
+
+Models are evaluated in this order:
+
+1. naïve training-prevalence baseline;
+2. L2 logistic regression;
+3. random forest.
+
+Log loss is the sole selection metric. The lowest validation log loss selects
+the final model; the test split is used once for reporting, not for selection.
+Random forest is selected in all four tracks. Male innings 2 uses 500 trees and
+`max_features=0.25`, chosen across three expanding chronological validation
+windows; the remaining tracks use the common RF settings in `params.yaml`.
+
+| Track | Test naïve | Test logistic | Test random forest |
+|---|---:|---:|---:|
+| Female innings 1 | 0.691459 | 0.691732 | **0.522331** |
+| Female innings 2 | 0.675578 | 0.344246 | **0.303235** |
+| Male innings 1 | 0.693698 | 0.754022 | **0.525996** |
+| Male innings 2 | 0.688326 | 0.425597 | **0.292898** |
+
+The modelling feature workbook records every included feature, its definition,
+observed null count, and preprocessing treatment.
+
+## 6. NWC attribution
+
+Within an innings, let the selected batting side's probability after event
+\(d\) be \(W_d\). Delivery contribution is
+
+\[
+\Delta W_d = W_d - W_{d-1}.
+\]
+
+The striker receives `+ΔW` as batting NWC and the bowler receives `−ΔW` as
+bowling NWC. The first event is compared with its synthetic pre-innings state.
+The innings break is not attributed. The first-innings endpoint retains the
+model probability; the final second-innings state is anchored to the known
+binary result.
+
+All recorded events, including wides, no-balls, byes, leg-byes, penalties, and
+dismissals, follow the same striker–bowler interaction rule. Aggregations are
+produced by delivery, player-match, season, and career. Primary rankings use the
+untouched test split.
+
+The attribution reconciles numerically: each striker–bowler event pair sums to
+zero, the maximum player-total mismatch within a match is approximately
+`3.33e-16`, and the maximum innings telescoping error is approximately
+`2.22e-16`.
+
+## 7. Interpretation and limitations
+
+The plotted values are model-generated conditional win probabilities, not a
+descriptive percentage calculated directly from the current match. Team
+identity, historical win rates, recent form, and live state jointly determine
+the starting and subsequent probabilities; they therefore need not begin at
+50%.
+
+NWC is a model-dependent interaction attribution, not a causal estimate. The
+source data does not identify catchers or all run-out fielders, so this version
+does not separately allocate fielding contribution. Calibration and temporal
+stability should be monitored when the model is extended to new seasons or
+competitions.

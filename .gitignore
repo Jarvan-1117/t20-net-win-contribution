@@ -19,20 +19,23 @@ data/raw/*
 !data/raw/README.md
 !data/raw/manifest.sha256
 data/interim/*
-!data/interim/.gitkeep
 data/processed/*
-!data/processed/.gitkeep
 models/*
-!models/README.md
 reports/figures/*
-!reports/figures/.gitkeep
 reports/metrics/*
-!reports/metrics/.gitkeep
 !reports/metrics/phase_01_raw_data_audit.json
 !reports/metrics/phase_02_game_state_features.json
 !reports/metrics/phase_03_historical_features.json
 !reports/metrics/phase_04_model_performance.json
+!reports/metrics/phase_04_rf_tuning_male_innings_2.json
+!reports/metrics/phase_05_nwc_attribution.json
+reports/model_cards/*
+
+# Keep final deliverables, not local rendering/inspection artefacts.
+outputs/**/*.inspect.ndjson
+outputs/**/slide-*.png
 
 # Local notebook and editor state.
 .jupyter/
 .vscode/settings.local.json
+/AGENTS.md

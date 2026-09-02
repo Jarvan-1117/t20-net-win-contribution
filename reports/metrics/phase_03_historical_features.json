@@ -12,7 +12,8 @@
       "hit the ball twice",
       "obstructing the field",
       "run out"
-    ]
+    ],
+    "team_form_win_rate": "exponentially weighted prior wins / prior matches with a 10-match half-life"
   },
   "historical_model_feature_columns": [
     "striker_prior_batting_matches",
@@ -34,8 +35,10 @@
     "bowler_prior_dot_ball_rate",
     "batting_team_prior_matches",
     "batting_team_prior_win_rate",
+    "batting_team_prior_ewm_win_rate",
     "bowling_team_prior_matches",
     "bowling_team_prior_win_rate",
+    "bowling_team_prior_ewm_win_rate",
     "venue_innings_prior_matches",
     "venue_innings_prior_batting_win_rate"
   ],
@@ -46,6 +49,8 @@
     "player_history_crosses_innings": true,
     "player_identity": "exact_display_name_within_gender",
     "playing_xi_inferred": false,
+    "team_form_decay_basis": "prior matches; same-date matches simultaneous",
+    "team_form_half_life_matches": 10,
     "team_history_crosses_innings": true,
     "venue_history_grouping": [
       "gender",
@@ -79,10 +84,11 @@
   },
   "tracks": {
     "female_innings_1": {
-      "columns": 63,
+      "columns": 65,
       "date_max": "2026-08-04",
       "date_min": "2009-06-18",
       "historical_feature_nulls": {
+        "batting_team_prior_ewm_win_rate": 5811,
         "batting_team_prior_matches": 0,
         "batting_team_prior_win_rate": 5811,
         "bowler_prior_bowling_matches": 0,
@@ -90,6 +96,7 @@
         "bowler_prior_dot_ball_rate": 19542,
         "bowler_prior_economy_rate": 19542,
         "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_ewm_win_rate": 7418,
         "bowling_team_prior_matches": 0,
         "bowling_team_prior_win_rate": 7418,
         "non_striker_prior_balls_faced": 0,
@@ -109,6 +116,8 @@
       },
       "matches": 1871,
       "model_feature_columns": [
+        "batting_team",
+        "bowling_team",
         "innings_score",
         "innings_wickets",
         "wickets_remaining",
@@ -139,8 +148,10 @@
         "bowler_prior_dot_ball_rate",
         "batting_team_prior_matches",
         "batting_team_prior_win_rate",
+        "batting_team_prior_ewm_win_rate",
         "bowling_team_prior_matches",
         "bowling_team_prior_win_rate",
+        "bowling_team_prior_ewm_win_rate",
         "venue_innings_prior_matches",
         "venue_innings_prior_batting_win_rate"
       ],
@@ -157,10 +168,11 @@
       }
     },
     "female_innings_2": {
-      "columns": 68,
+      "columns": 70,
       "date_max": "2026-08-04",
       "date_min": "2009-06-18",
       "historical_feature_nulls": {
+        "batting_team_prior_ewm_win_rate": 6049,
         "batting_team_prior_matches": 0,
         "batting_team_prior_win_rate": 6049,
         "bowler_prior_bowling_matches": 0,
@@ -168,6 +180,7 @@
         "bowler_prior_dot_ball_rate": 14823,
         "bowler_prior_economy_rate": 14823,
         "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_ewm_win_rate": 4341,
         "bowling_team_prior_matches": 0,
         "bowling_team_prior_win_rate": 4341,
         "non_striker_prior_balls_faced": 0,
@@ -187,6 +200,8 @@
       },
       "matches": 1871,
       "model_feature_columns": [
+        "batting_team",
+        "bowling_team",
         "innings_score",
         "innings_wickets",
         "wickets_remaining",
@@ -222,8 +237,10 @@
         "bowler_prior_dot_ball_rate",
         "batting_team_prior_matches",
         "batting_team_prior_win_rate",
+        "batting_team_prior_ewm_win_rate",
         "bowling_team_prior_matches",
         "bowling_team_prior_win_rate",
+        "bowling_team_prior_ewm_win_rate",
         "venue_innings_prior_matches",
         "venue_innings_prior_batting_win_rate"
       ],
@@ -240,10 +257,11 @@
       }
     },
     "male_innings_1": {
-      "columns": 63,
+      "columns": 65,
       "date_max": "2026-08-01",
       "date_min": "2005-02-17",
       "historical_feature_nulls": {
+        "batting_team_prior_ewm_win_rate": 6510,
         "batting_team_prior_matches": 0,
         "batting_team_prior_win_rate": 6510,
         "bowler_prior_bowling_matches": 0,
@@ -251,6 +269,7 @@
         "bowler_prior_dot_ball_rate": 31769,
         "bowler_prior_economy_rate": 31769,
         "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_ewm_win_rate": 8064,
         "bowling_team_prior_matches": 0,
         "bowling_team_prior_win_rate": 8064,
         "non_striker_prior_balls_faced": 0,
@@ -270,6 +289,8 @@
       },
       "matches": 3104,
       "model_feature_columns": [
+        "batting_team",
+        "bowling_team",
         "innings_score",
         "innings_wickets",
         "wickets_remaining",
@@ -300,8 +321,10 @@
         "bowler_prior_dot_ball_rate",
         "batting_team_prior_matches",
         "batting_team_prior_win_rate",
+        "batting_team_prior_ewm_win_rate",
         "bowling_team_prior_matches",
         "bowling_team_prior_win_rate",
+        "bowling_team_prior_ewm_win_rate",
         "venue_innings_prior_matches",
         "venue_innings_prior_batting_win_rate"
       ],
@@ -318,10 +341,11 @@
       }
     },
     "male_innings_2": {
-      "columns": 68,
+      "columns": 70,
       "date_max": "2026-08-01",
       "date_min": "2005-02-17",
       "historical_feature_nulls": {
+        "batting_team_prior_ewm_win_rate": 7202,
         "batting_team_prior_matches": 0,
         "batting_team_prior_win_rate": 7202,
         "bowler_prior_bowling_matches": 0,
@@ -329,6 +353,7 @@
         "bowler_prior_dot_ball_rate": 26752,
         "bowler_prior_economy_rate": 26752,
         "bowler_prior_legal_balls": 0,
+        "bowling_team_prior_ewm_win_rate": 5186,
         "bowling_team_prior_matches": 0,
         "bowling_team_prior_win_rate": 5186,
         "non_striker_prior_balls_faced": 0,
@@ -348,6 +373,8 @@
       },
       "matches": 3104,
       "model_feature_columns": [
+        "batting_team",
+        "bowling_team",
         "innings_score",
         "innings_wickets",
         "wickets_remaining",
@@ -383,8 +410,10 @@
         "bowler_prior_dot_ball_rate",
         "batting_team_prior_matches",
         "batting_team_prior_win_rate",
+        "batting_team_prior_ewm_win_rate",
         "bowling_team_prior_matches",
         "bowling_team_prior_win_rate",
+        "bowling_team_prior_ewm_win_rate",
         "venue_innings_prior_matches",
         "venue_innings_prior_batting_win_rate"
       ],

@@ -46,6 +46,7 @@ features:
   historical:
     date_rule: strictly_before_match_date
     equal_date_rule: simultaneous
+    team_form_half_life_matches: 10
     player_identity: exact_display_name_within_gender
     undefined_rate_policy: null_with_zero_exposure
     batting_ball_definition: non_wide_event
@@ -102,3 +103,9 @@ model:
     bootstrap: true
     n_jobs: -1
     random_state: 42
+    track_overrides:
+      # Selected for male innings 2 using three expanding chronological
+      # validation windows; the final test period was not used for selection.
+      male_innings_2:
+        n_estimators: 500
+        max_features: 0.25
