@@ -23,148 +23,148 @@
       {
         "delivery_events": 1014275,
         "event_type": "standard_delivery",
-        "mean_absolute_probability_change": 0.01416037930537956,
-        "net_probability_change": 793.164432972705,
+        "mean_absolute_probability_change": 0.013956687353452332,
+        "net_probability_change": 631.9281477391207,
         "wicket_kind": NaN
       },
       {
         "delivery_events": 52600,
         "event_type": "wide",
-        "mean_absolute_probability_change": 0.015068264976675887,
-        "net_probability_change": 496.5137940554145,
+        "mean_absolute_probability_change": 0.015364961387172894,
+        "net_probability_change": 588.052148096169,
         "wicket_kind": NaN
       },
       {
         "delivery_events": 32170,
         "event_type": "dismissal",
-        "mean_absolute_probability_change": 0.027585525652731695,
-        "net_probability_change": -806.586843048619,
+        "mean_absolute_probability_change": 0.027499840251910827,
+        "net_probability_change": -798.7087533348472,
         "wicket_kind": "caught"
       },
       {
         "delivery_events": 14935,
         "event_type": "dismissal",
-        "mean_absolute_probability_change": 0.025793703168944616,
-        "net_probability_change": -343.505066420675,
+        "mean_absolute_probability_change": 0.02513429229263414,
+        "net_probability_change": -336.6047950977377,
         "wicket_kind": "bowled"
       },
       {
         "delivery_events": 13757,
         "event_type": "legbyes",
-        "mean_absolute_probability_change": 0.011297369296597533,
-        "net_probability_change": 24.43590845408649,
+        "mean_absolute_probability_change": 0.010044296401157388,
+        "net_probability_change": 22.44889741483633,
         "wicket_kind": NaN
       },
       {
         "delivery_events": 6499,
         "event_type": "no_ball",
-        "mean_absolute_probability_change": 0.019883538676280493,
-        "net_probability_change": 98.8115966894503,
+        "mean_absolute_probability_change": 0.021089876184064042,
+        "net_probability_change": 113.5877063957493,
         "wicket_kind": NaN
       },
       {
         "delivery_events": 6347,
         "event_type": "dismissal",
-        "mean_absolute_probability_change": 0.026050619630172245,
-        "net_probability_change": -139.22869977451177,
+        "mean_absolute_probability_change": 0.023749669690651537,
+        "net_probability_change": -122.45783680818072,
         "wicket_kind": "run out"
       },
       {
         "delivery_events": 5526,
         "event_type": "dismissal",
-        "mean_absolute_probability_change": 0.026834379637699635,
-        "net_probability_change": -134.9392258217725,
+        "mean_absolute_probability_change": 0.026971010470772598,
+        "net_probability_change": -134.483554700908,
         "wicket_kind": "lbw"
       },
       {
         "delivery_events": 5344,
         "event_type": "byes",
-        "mean_absolute_probability_change": 0.014235802701388077,
-        "net_probability_change": 29.684117164472532,
+        "mean_absolute_probability_change": 0.013557899803151809,
+        "net_probability_change": 35.97716313583994,
         "wicket_kind": NaN
       },
       {
         "delivery_events": 2237,
         "event_type": "dismissal",
-        "mean_absolute_probability_change": 0.02635959674067603,
-        "net_probability_change": -53.637519238516305,
+        "mean_absolute_probability_change": 0.024195690678142673,
+        "net_probability_change": -48.712326959038,
         "wicket_kind": "stumped"
       },
       {
         "delivery_events": 2177,
         "event_type": "dismissal",
-        "mean_absolute_probability_change": 0.026874554949170952,
-        "net_probability_change": -53.474945813783236,
+        "mean_absolute_probability_change": 0.02554826289584264,
+        "net_probability_change": -50.41136562830659,
         "wicket_kind": "caught and bowled"
       },
       {
         "delivery_events": 121,
         "event_type": "wide",
-        "mean_absolute_probability_change": 0.02104831320164577,
-        "net_probability_change": -1.6646137016667593,
+        "mean_absolute_probability_change": 0.017902979437386446,
+        "net_probability_change": -1.0162437127826047,
         "wicket_kind": "stumped"
       },
       {
         "delivery_events": 61,
         "event_type": "dismissal",
-        "mean_absolute_probability_change": 0.02699382724866367,
-        "net_probability_change": -1.5131151530422438,
+        "mean_absolute_probability_change": 0.029718221353785986,
+        "net_probability_change": -1.6420769064114527,
         "wicket_kind": "hit wicket"
       },
       {
         "delivery_events": 59,
         "event_type": "wide",
-        "mean_absolute_probability_change": 0.016501149227267826,
-        "net_probability_change": -0.3857951694902452,
+        "mean_absolute_probability_change": 0.012804034384823063,
+        "net_probability_change": 0.02874248220865877,
         "wicket_kind": "run out"
       },
       {
         "delivery_events": 41,
         "event_type": "no_ball",
-        "mean_absolute_probability_change": 0.020137604977316065,
-        "net_probability_change": -0.3547392619414461,
+        "mean_absolute_probability_change": 0.016911072897015888,
+        "net_probability_change": -0.10975154355179753,
         "wicket_kind": "run out"
       },
       {
         "delivery_events": 20,
         "event_type": "byes",
-        "mean_absolute_probability_change": 0.020306268725440883,
-        "net_probability_change": -0.26097828175939164,
+        "mean_absolute_probability_change": 0.016643695136636844,
+        "net_probability_change": -0.18662913861837802,
         "wicket_kind": "run out"
       },
       {
         "delivery_events": 19,
         "event_type": "legbyes",
-        "mean_absolute_probability_change": 0.0219133231086392,
-        "net_probability_change": -0.27199558154058967,
+        "mean_absolute_probability_change": 0.014484098008373103,
+        "net_probability_change": -0.14209901675934303,
         "wicket_kind": "run out"
       },
       {
         "delivery_events": 14,
         "event_type": "penalty",
-        "mean_absolute_probability_change": 0.03242158061116714,
-        "net_probability_change": 0.4427165040740755,
+        "mean_absolute_probability_change": 0.033243429326245195,
+        "net_probability_change": 0.4540603508601195,
         "wicket_kind": NaN
       },
       {
         "delivery_events": 9,
         "event_type": "dismissal",
-        "mean_absolute_probability_change": 0.01982643808251491,
-        "net_probability_change": -0.13773209786522206,
+        "mean_absolute_probability_change": 0.020602111096973505,
+        "net_probability_change": -0.15751913022217234,
         "wicket_kind": "obstructing the field"
       },
       {
         "delivery_events": 3,
         "event_type": "wide",
-        "mean_absolute_probability_change": 0.01539277531777375,
-        "net_probability_change": -0.010468154369001975,
+        "mean_absolute_probability_change": 0.0062530804225749,
+        "net_probability_change": -0.0187592412677247,
         "wicket_kind": "hit wicket"
       },
       {
         "delivery_events": 1,
         "event_type": "dismissal",
-        "mean_absolute_probability_change": 0.015995273749847105,
-        "net_probability_change": -0.015995273749847105,
+        "mean_absolute_probability_change": 0.009355034115649918,
+        "net_probability_change": -0.009355034115649918,
         "wicket_kind": "hit the ball twice"
       }
     ],
@@ -182,7 +182,7 @@
     "test_player_rows": 2651
   },
   "reconciliation": {
-    "dataset_player_event_total": -1.2434497875801753e-14,
+    "dataset_player_event_total": 1.4210854715202004e-14,
     "maximum_absolute_delivery_pair_sum": 0.0,
     "maximum_absolute_innings_telescoping_difference": 2.220446049250313e-16,
     "maximum_absolute_match_player_total_sum": 3.3306690738754696e-16

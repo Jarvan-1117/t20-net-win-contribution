@@ -1,0 +1,754 @@
+{
+  "report_version": 2,
+  "selection_policy": "lowest mean log loss across three expanding chronological validation windows",
+  "fold_fraction_ends": [
+    [
+      0.55,
+      0.65
+    ],
+    [
+      0.65,
+      0.75
+    ],
+    [
+      0.75,
+      0.85
+    ]
+  ],
+  "test_not_used_until_after_parameter_lock": true,
+  "screening_n_estimators": 200,
+  "tracks": {
+    "female_innings_1": {
+      "track": "female_innings_1",
+      "folds": [
+        {
+          "name": "fold_1",
+          "train_fraction_end": 0.55,
+          "validation_fraction_end": 0.65,
+          "train_end": "2024-06-01",
+          "validation_end": "2024-12-16",
+          "train_states": 128901,
+          "validation_states": 24279,
+          "candidate_log_loss": {
+            "current": 0.5038759901697955,
+            "shallower": 0.5228240748673363,
+            "deeper": 0.501114988720835,
+            "smaller_leaf": 0.5024967783559853,
+            "larger_leaf": 0.5081836397183677,
+            "features_025": 0.4815710261429567,
+            "features_040": 0.482716836737572,
+            "deep_leaf25_f025": 0.4818080680232323
+          }
+        },
+        {
+          "name": "fold_2",
+          "train_fraction_end": 0.65,
+          "validation_fraction_end": 0.75,
+          "train_end": "2024-12-16",
+          "validation_end": "2025-07-12",
+          "train_states": 153180,
+          "validation_states": 24023,
+          "candidate_log_loss": {
+            "current": 0.5610134891737371,
+            "shallower": 0.5709288739549425,
+            "deeper": 0.5572443481881237,
+            "smaller_leaf": 0.5602054329244692,
+            "larger_leaf": 0.5631550418816577,
+            "features_025": 0.5726816694699515,
+            "features_040": 0.5933114525781741,
+            "deep_leaf25_f025": 0.578939540662208
+          }
+        },
+        {
+          "name": "fold_3",
+          "train_fraction_end": 0.75,
+          "validation_fraction_end": 0.85,
+          "train_end": "2025-07-12",
+          "validation_end": "2025-12-19",
+          "train_states": 177203,
+          "validation_states": 24451,
+          "candidate_log_loss": {
+            "current": 0.47986599339597086,
+            "shallower": 0.5034678755099448,
+            "deeper": 0.47134606872712703,
+            "smaller_leaf": 0.48023215002245934,
+            "larger_leaf": 0.48485158620518876,
+            "features_025": 0.4525995308524645,
+            "features_040": 0.45906215785645643,
+            "deep_leaf25_f025": 0.4541210174507418
+          }
+        }
+      ],
+      "random_forest_screen": [
+        {
+          "label": "features_025",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": 0.25,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.4815710261429567,
+            0.5726816694699515,
+            0.4525995308524645
+          ],
+          "mean_validation_log_loss": 0.5022840754884575,
+          "std_validation_log_loss": 0.05116445910739995
+        },
+        {
+          "label": "deep_leaf25_f025",
+          "max_depth": 18,
+          "min_samples_leaf": 25,
+          "max_features": 0.25,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.4818080680232323,
+            0.578939540662208,
+            0.4541210174507418
+          ],
+          "mean_validation_log_loss": 0.5049562087120607,
+          "std_validation_log_loss": 0.05352129325284268
+        },
+        {
+          "label": "deeper",
+          "max_depth": 18,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.501114988720835,
+            0.5572443481881237,
+            0.47134606872712703
+          ],
+          "mean_validation_log_loss": 0.5099018018786953,
+          "std_validation_log_loss": 0.035613992266085824
+        },
+        {
+          "label": "features_040",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": 0.4,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.482716836737572,
+            0.5933114525781741,
+            0.45906215785645643
+          ],
+          "mean_validation_log_loss": 0.5116968157240674,
+          "std_validation_log_loss": 0.058512663414927786
+        },
+        {
+          "label": "smaller_leaf",
+          "max_depth": 14,
+          "min_samples_leaf": 25,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5024967783559853,
+            0.5602054329244692,
+            0.48023215002245934
+          ],
+          "mean_validation_log_loss": 0.514311453767638,
+          "std_validation_log_loss": 0.03370085469582099
+        },
+        {
+          "label": "current",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5038759901697955,
+            0.5610134891737371,
+            0.47986599339597086
+          ],
+          "mean_validation_log_loss": 0.5149184909131678,
+          "std_validation_log_loss": 0.034036075319687685
+        },
+        {
+          "label": "larger_leaf",
+          "max_depth": 14,
+          "min_samples_leaf": 100,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5081836397183677,
+            0.5631550418816577,
+            0.48485158620518876
+          ],
+          "mean_validation_log_loss": 0.5187300892684047,
+          "std_validation_log_loss": 0.03282558444570119
+        },
+        {
+          "label": "shallower",
+          "max_depth": 10,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5228240748673363,
+            0.5709288739549425,
+            0.5034678755099448
+          ],
+          "mean_validation_log_loss": 0.5324069414440745,
+          "std_validation_log_loss": 0.02836218229344224
+        }
+      ],
+      "selected_label": "features_025",
+      "selected_override": {
+        "n_estimators": 500,
+        "max_depth": 14,
+        "min_samples_leaf": 50,
+        "max_features": 0.25
+      }
+    },
+    "female_innings_2": {
+      "track": "female_innings_2",
+      "folds": [
+        {
+          "name": "fold_1",
+          "train_fraction_end": 0.55,
+          "validation_fraction_end": 0.65,
+          "train_end": "2024-06-01",
+          "validation_end": "2024-12-16",
+          "train_states": 110340,
+          "validation_states": 20487,
+          "candidate_log_loss": {
+            "current": 0.29485353522570124,
+            "shallower": 0.3075675897909178,
+            "deeper": 0.2949808609198393,
+            "smaller_leaf": 0.2896396248057909,
+            "larger_leaf": 0.3002710575590656,
+            "features_025": 0.2751731232528233,
+            "features_040": 0.28229708610521426,
+            "deep_leaf25_f025": 0.2795127881333684
+          }
+        },
+        {
+          "name": "fold_2",
+          "train_fraction_end": 0.65,
+          "validation_fraction_end": 0.75,
+          "train_end": "2024-12-16",
+          "validation_end": "2025-07-12",
+          "train_states": 130827,
+          "validation_states": 20499,
+          "candidate_log_loss": {
+            "current": 0.35223351043369067,
+            "shallower": 0.36568987373465367,
+            "deeper": 0.3512111501732887,
+            "smaller_leaf": 0.3480755990198987,
+            "larger_leaf": 0.36029830797762336,
+            "features_025": 0.3444512956017051,
+            "features_040": 0.35483779210364735,
+            "deep_leaf25_f025": 0.34393569795020135
+          }
+        },
+        {
+          "name": "fold_3",
+          "train_fraction_end": 0.75,
+          "validation_fraction_end": 0.85,
+          "train_end": "2025-07-12",
+          "validation_end": "2025-12-19",
+          "train_states": 151326,
+          "validation_states": 20090,
+          "candidate_log_loss": {
+            "current": 0.2693342817123291,
+            "shallower": 0.28319344228941284,
+            "deeper": 0.26821530416640865,
+            "smaller_leaf": 0.2671548895021894,
+            "larger_leaf": 0.2745366851880725,
+            "features_025": 0.247839705450747,
+            "features_040": 0.24601154743381062,
+            "deep_leaf25_f025": 0.24882637935896426
+          }
+        }
+      ],
+      "random_forest_screen": [
+        {
+          "label": "features_025",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": 0.25,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.2751731232528233,
+            0.3444512956017051,
+            0.247839705450747
+          ],
+          "mean_validation_log_loss": 0.2891547081017584,
+          "std_validation_log_loss": 0.04066172134444678
+        },
+        {
+          "label": "deep_leaf25_f025",
+          "max_depth": 18,
+          "min_samples_leaf": 25,
+          "max_features": 0.25,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.2795127881333684,
+            0.34393569795020135,
+            0.24882637935896426
+          ],
+          "mean_validation_log_loss": 0.2907582884808447,
+          "std_validation_log_loss": 0.039634089529689595
+        },
+        {
+          "label": "features_040",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": 0.4,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.28229708610521426,
+            0.35483779210364735,
+            0.24601154743381062
+          ],
+          "mean_validation_log_loss": 0.29438214188089074,
+          "std_validation_log_loss": 0.04524248970500113
+        },
+        {
+          "label": "smaller_leaf",
+          "max_depth": 14,
+          "min_samples_leaf": 25,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.2896396248057909,
+            0.3480755990198987,
+            0.2671548895021894
+          ],
+          "mean_validation_log_loss": 0.301623371109293,
+          "std_validation_log_loss": 0.034105209170178064
+        },
+        {
+          "label": "deeper",
+          "max_depth": 18,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.2949808609198393,
+            0.3512111501732887,
+            0.26821530416640865
+          ],
+          "mean_validation_log_loss": 0.30480243841984556,
+          "std_validation_log_loss": 0.034587330551719926
+        },
+        {
+          "label": "current",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.29485353522570124,
+            0.35223351043369067,
+            0.2693342817123291
+          ],
+          "mean_validation_log_loss": 0.30547377579057367,
+          "std_validation_log_loss": 0.034666628168802116
+        },
+        {
+          "label": "larger_leaf",
+          "max_depth": 14,
+          "min_samples_leaf": 100,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.3002710575590656,
+            0.36029830797762336,
+            0.2745366851880725
+          ],
+          "mean_validation_log_loss": 0.3117020169082538,
+          "std_validation_log_loss": 0.03593293855324014
+        },
+        {
+          "label": "shallower",
+          "max_depth": 10,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.3075675897909178,
+            0.36568987373465367,
+            0.28319344228941284
+          ],
+          "mean_validation_log_loss": 0.3188169686049948,
+          "std_validation_log_loss": 0.03460565168751854
+        }
+      ],
+      "selected_label": "features_025",
+      "selected_override": {
+        "n_estimators": 500,
+        "max_depth": 14,
+        "min_samples_leaf": 50,
+        "max_features": 0.25
+      }
+    },
+    "male_innings_1": {
+      "track": "male_innings_1",
+      "folds": [
+        {
+          "name": "fold_1",
+          "train_fraction_end": 0.55,
+          "validation_fraction_end": 0.65,
+          "train_end": "2023-11-21",
+          "validation_end": "2024-07-13",
+          "train_states": 212424,
+          "validation_states": 38660,
+          "candidate_log_loss": {
+            "current": 0.5985071124333707,
+            "shallower": 0.6067768416350974,
+            "deeper": 0.5921773037605278,
+            "smaller_leaf": 0.5999444516635362,
+            "larger_leaf": 0.5970396580332878,
+            "features_025": 0.5942555153612754,
+            "features_040": 0.5977547051253057,
+            "deep_leaf25_f025": 0.6008535187993315
+          }
+        },
+        {
+          "name": "fold_2",
+          "train_fraction_end": 0.65,
+          "validation_fraction_end": 0.75,
+          "train_end": "2024-07-13",
+          "validation_end": "2025-03-23",
+          "train_states": 251084,
+          "validation_states": 38021,
+          "candidate_log_loss": {
+            "current": 0.5504968680364216,
+            "shallower": 0.565578469531007,
+            "deeper": 0.5465936047593726,
+            "smaller_leaf": 0.5499582059001897,
+            "larger_leaf": 0.5552564406092791,
+            "features_025": 0.5446297156650884,
+            "features_040": 0.5475305701814535,
+            "deep_leaf25_f025": 0.5433619307888047
+          }
+        },
+        {
+          "name": "fold_3",
+          "train_fraction_end": 0.75,
+          "validation_fraction_end": 0.85,
+          "train_end": "2025-03-23",
+          "validation_end": "2025-10-09",
+          "train_states": 289105,
+          "validation_states": 38799,
+          "candidate_log_loss": {
+            "current": 0.5670594854321429,
+            "shallower": 0.5851032380735212,
+            "deeper": 0.5597284863974505,
+            "smaller_leaf": 0.5668839322678855,
+            "larger_leaf": 0.5685420019450118,
+            "features_025": 0.5512818236399927,
+            "features_040": 0.5514655501653131,
+            "deep_leaf25_f025": 0.5532747485293077
+          }
+        }
+      ],
+      "random_forest_screen": [
+        {
+          "label": "features_025",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": 0.25,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5942555153612754,
+            0.5446297156650884,
+            0.5512818236399927
+          ],
+          "mean_validation_log_loss": 0.5633890182221188,
+          "std_validation_log_loss": 0.021994213168598335
+        },
+        {
+          "label": "features_040",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": 0.4,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5977547051253057,
+            0.5475305701814535,
+            0.5514655501653131
+          ],
+          "mean_validation_log_loss": 0.5655836084906908,
+          "std_validation_log_loss": 0.0228050522307908
+        },
+        {
+          "label": "deep_leaf25_f025",
+          "max_depth": 18,
+          "min_samples_leaf": 25,
+          "max_features": 0.25,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.6008535187993315,
+            0.5433619307888047,
+            0.5532747485293077
+          ],
+          "mean_validation_log_loss": 0.5658300660391479,
+          "std_validation_log_loss": 0.025093793008401005
+        },
+        {
+          "label": "deeper",
+          "max_depth": 18,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5921773037605278,
+            0.5465936047593726,
+            0.5597284863974505
+          ],
+          "mean_validation_log_loss": 0.5661664649724503,
+          "std_validation_log_loss": 0.0191581850176558
+        },
+        {
+          "label": "current",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5985071124333707,
+            0.5504968680364216,
+            0.5670594854321429
+          ],
+          "mean_validation_log_loss": 0.5720211553006451,
+          "std_validation_log_loss": 0.019911630063469573
+        },
+        {
+          "label": "smaller_leaf",
+          "max_depth": 14,
+          "min_samples_leaf": 25,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5999444516635362,
+            0.5499582059001897,
+            0.5668839322678855
+          ],
+          "mean_validation_log_loss": 0.5722621966105371,
+          "std_validation_log_loss": 0.020758138755405404
+        },
+        {
+          "label": "larger_leaf",
+          "max_depth": 14,
+          "min_samples_leaf": 100,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.5970396580332878,
+            0.5552564406092791,
+            0.5685420019450118
+          ],
+          "mean_validation_log_loss": 0.5736127001958596,
+          "std_validation_log_loss": 0.01743068750104939
+        },
+        {
+          "label": "shallower",
+          "max_depth": 10,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.6067768416350974,
+            0.565578469531007,
+            0.5851032380735212
+          ],
+          "mean_validation_log_loss": 0.5858195164132085,
+          "std_validation_log_loss": 0.016826789295677734
+        }
+      ],
+      "selected_label": "features_025",
+      "selected_override": {
+        "n_estimators": 500,
+        "max_depth": 14,
+        "min_samples_leaf": 50,
+        "max_features": 0.25
+      }
+    },
+    "male_innings_2": {
+      "track": "male_innings_2",
+      "folds": [
+        {
+          "name": "fold_1",
+          "train_fraction_end": 0.55,
+          "validation_fraction_end": 0.65,
+          "train_end": "2023-11-21",
+          "validation_end": "2024-07-13",
+          "train_states": 190281,
+          "validation_states": 33732,
+          "candidate_log_loss": {
+            "current": 0.3971401037510822,
+            "shallower": 0.4125689107276859,
+            "deeper": 0.39166403650452836,
+            "smaller_leaf": 0.39444588645071776,
+            "larger_leaf": 0.39859293118022127,
+            "features_025": 0.38324026855145005,
+            "features_040": 0.38975729569726514,
+            "deep_leaf25_f025": 0.3875149932808449
+          }
+        },
+        {
+          "name": "fold_2",
+          "train_fraction_end": 0.65,
+          "validation_fraction_end": 0.75,
+          "train_end": "2024-07-13",
+          "validation_end": "2025-03-23",
+          "train_states": 224013,
+          "validation_states": 32354,
+          "candidate_log_loss": {
+            "current": 0.3367719425394451,
+            "shallower": 0.35261220597377063,
+            "deeper": 0.33374132338931595,
+            "smaller_leaf": 0.3345302204643885,
+            "larger_leaf": 0.3414582784699881,
+            "features_025": 0.31855123942227215,
+            "features_040": 0.32375624711310996,
+            "deep_leaf25_f025": 0.31931062153407025
+          }
+        },
+        {
+          "name": "fold_3",
+          "train_fraction_end": 0.75,
+          "validation_fraction_end": 0.85,
+          "train_end": "2025-03-23",
+          "validation_end": "2025-10-09",
+          "train_states": 256367,
+          "validation_states": 33984,
+          "candidate_log_loss": {
+            "current": 0.3344441534974433,
+            "shallower": 0.3560423469381706,
+            "deeper": 0.32943670870206593,
+            "smaller_leaf": 0.33255319255599797,
+            "larger_leaf": 0.34045056761252973,
+            "features_025": 0.3106542300858435,
+            "features_040": 0.31310891608618147,
+            "deep_leaf25_f025": 0.31193134711042936
+          }
+        }
+      ],
+      "random_forest_screen": [
+        {
+          "label": "features_025",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": 0.25,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.38324026855145005,
+            0.31855123942227215,
+            0.3106542300858435
+          ],
+          "mean_validation_log_loss": 0.3374819126865219,
+          "std_validation_log_loss": 0.03251626298445096
+        },
+        {
+          "label": "deep_leaf25_f025",
+          "max_depth": 18,
+          "min_samples_leaf": 25,
+          "max_features": 0.25,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.3875149932808449,
+            0.31931062153407025,
+            0.31193134711042936
+          ],
+          "mean_validation_log_loss": 0.3395856539751148,
+          "std_validation_log_loss": 0.03402479093707704
+        },
+        {
+          "label": "features_040",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": 0.4,
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.38975729569726514,
+            0.32375624711310996,
+            0.31310891608618147
+          ],
+          "mean_validation_log_loss": 0.3422074862988522,
+          "std_validation_log_loss": 0.033902602602831726
+        },
+        {
+          "label": "deeper",
+          "max_depth": 18,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.39166403650452836,
+            0.33374132338931595,
+            0.32943670870206593
+          ],
+          "mean_validation_log_loss": 0.35161402286530347,
+          "std_validation_log_loss": 0.028374109340241857
+        },
+        {
+          "label": "smaller_leaf",
+          "max_depth": 14,
+          "min_samples_leaf": 25,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.39444588645071776,
+            0.3345302204643885,
+            0.33255319255599797
+          ],
+          "mean_validation_log_loss": 0.35384309982370143,
+          "std_validation_log_loss": 0.02872184849258954
+        },
+        {
+          "label": "current",
+          "max_depth": 14,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.3971401037510822,
+            0.3367719425394451,
+            0.3344441534974433
+          ],
+          "mean_validation_log_loss": 0.3561187332626569,
+          "std_validation_log_loss": 0.029022052282330724
+        },
+        {
+          "label": "larger_leaf",
+          "max_depth": 14,
+          "min_samples_leaf": 100,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.39859293118022127,
+            0.3414582784699881,
+            0.34045056761252973
+          ],
+          "mean_validation_log_loss": 0.36016725908757974,
+          "std_validation_log_loss": 0.027174167599903522
+        },
+        {
+          "label": "shallower",
+          "max_depth": 10,
+          "min_samples_leaf": 50,
+          "max_features": "sqrt",
+          "max_samples": 0.8,
+          "fold_log_loss": [
+            0.4125689107276859,
+            0.35261220597377063,
+            0.3560423469381706
+          ],
+          "mean_validation_log_loss": 0.3737411545465424,
+          "std_validation_log_loss": 0.027491058598577842
+        }
+      ],
+      "selected_label": "features_025",
+      "selected_override": {
+        "n_estimators": 500,
+        "max_depth": 14,
+        "min_samples_leaf": 50,
+        "max_features": 0.25
+      }
+    }
+  }
+}

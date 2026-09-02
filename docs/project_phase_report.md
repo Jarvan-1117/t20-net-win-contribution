@@ -65,17 +65,16 @@ standardisation 均只在训练集拟合。`batting_team` 和 `bowling_team` 作
 predictor，只在训练数据上拟合 one-hot encoding，并允许测试时出现未知队伍。
 唯一模型指标为 log loss。
 
-**结果：** 加入队伍身份、长期胜率与近期状态后，Random Forest 在女子两局和
-男子第一局的 validation log loss 最低。男子第二局通过三个 expanding temporal
-validation windows 比较 8 组 RF 参数，采用 `max_features=0.25` 和 500 棵树；正式
-validation log loss 从 0.339799 降到 0.314362，低于 Logistic Regression 的
-0.337864，因此四个 track 最终均选择 Random Forest。
+**结果：** 加入队伍身份、长期胜率与近期状态后，Random Forest 在四个 track 的
+validation log loss 均最低。每个 track 分别通过三个 expanding temporal validation
+windows 比较同一组 8 个 RF 参数；四组均选择 `max_features=0.25` 和 500 棵树，
+同时保持 `max_depth=14` 与 `min_samples_leaf=50`。整个调参过程不使用 test period。
 
 | Track | Test naïve | Test Logistic Regression | Test Random Forest |
 |---|---:|---:|---:|
-| Female innings 1 | 0.691459 | 0.691732 | **0.522331** |
-| Female innings 2 | 0.675578 | 0.344246 | **0.303235** |
-| Male innings 1 | 0.693698 | 0.754022 | **0.525996** |
+| Female innings 1 | 0.691459 | 0.691732 | **0.510914** |
+| Female innings 2 | 0.675578 | 0.344246 | **0.273831** |
+| Male innings 1 | 0.693698 | 0.754022 | **0.495486** |
 | Male innings 2 | 0.688326 | 0.425597 | **0.292898** |
 
 **产出：** 模型 artifacts、四个带预测概率的 state 文件、feature data dictionary
@@ -100,7 +99,7 @@ dismissals）采用同一 baseline striker–bowler interaction rule。主要球
 
 **结果：** 生成 1,156,215 个逐球 NWC 记录、102,924 个 player-match 记录和
 2,651 个 test-split 球员汇总。逐球配对和为 0；单场球员总和最大误差为
-`3.33e-16`；逐局概率变化核对最大误差为 `2.22e-16`，均为浮点精度残差。
+`3.61e-16`；逐局概率变化核对最大误差为 `2.22e-16`，均为浮点精度残差。
 
 **限制：** 原始数据没有接球者或制造 run-out 的守场员身份，因此此版本是零和的
 striker–bowler interaction metric，不是完整的 fielding 或因果归因模型。
@@ -113,6 +112,6 @@ striker–bowler interaction metric，不是完整的 fielding 或因果归因�
 项目已形成一条完整、可运行的 Phase 01–05 流程：先审计和清洗事件流，再构建
 局数安全与时间安全的特征，选择概率模型，最后把概率变化转换为可核对的 NWC。
 当前最适合报告的模型结论是：Random Forest 在四个独立模型 track 中均取得最低
-validation log loss；男子第二局的改进来自预先进行的滚动时间验证调参，而不是
-依据 test set 改选。当前最适合报告的球员结果是来自 untouched test split 的 NWC
-汇总，而不是训练集内排名。
+validation log loss；四组 RF 参数均通过预先进行的滚动时间验证选择，而不是依据
+test set 改选。当前最适合报告的球员结果是来自 untouched test split 的 NWC 汇总，
+而不是训练集内排名。

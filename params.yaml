@@ -104,8 +104,17 @@ model:
     n_jobs: -1
     random_state: 42
     track_overrides:
-      # Selected for male innings 2 using three expanding chronological
-      # validation windows; the final test period was not used for selection.
+      # Each track independently selected the same override using three
+      # expanding chronological windows; test periods were not used.
+      female_innings_1:
+        n_estimators: 500
+        max_features: 0.25
+      female_innings_2:
+        n_estimators: 500
+        max_features: 0.25
+      male_innings_1:
+        n_estimators: 500
+        max_features: 0.25
       male_innings_2:
         n_estimators: 500
         max_features: 0.25

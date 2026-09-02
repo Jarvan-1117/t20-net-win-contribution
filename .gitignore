@@ -16,7 +16,6 @@ htmlcov/
 
 # Raw, derived, and model artifacts are versioned outside normal Git.
 data/raw/*
-!data/raw/README.md
 !data/raw/manifest.sha256
 data/interim/*
 data/processed/*
@@ -27,7 +26,7 @@ reports/metrics/*
 !reports/metrics/phase_02_game_state_features.json
 !reports/metrics/phase_03_historical_features.json
 !reports/metrics/phase_04_model_performance.json
-!reports/metrics/phase_04_rf_tuning_male_innings_2.json
+!reports/metrics/phase_04_rf_tuning.json
 !reports/metrics/phase_05_nwc_attribution.json
 reports/model_cards/*
 

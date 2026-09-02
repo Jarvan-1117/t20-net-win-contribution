@@ -74,15 +74,17 @@ Models are evaluated in this order:
 
 Log loss is the sole selection metric. The lowest validation log loss selects
 the final model; the test split is used once for reporting, not for selection.
-Random forest is selected in all four tracks. Male innings 2 uses 500 trees and
-`max_features=0.25`, chosen across three expanding chronological validation
-windows; the remaining tracks use the common RF settings in `params.yaml`.
+Random forest is selected in all four tracks. Each track independently compares
+the same eight RF configurations across three expanding chronological validation
+windows (55–65%, 65–75%, and 75–85% of match history). All four select 500 trees
+and `max_features=0.25`, while retaining `max_depth=14` and
+`min_samples_leaf=50`. Test periods are excluded until after parameter lock.
 
 | Track | Test naïve | Test logistic | Test random forest |
 |---|---:|---:|---:|
-| Female innings 1 | 0.691459 | 0.691732 | **0.522331** |
-| Female innings 2 | 0.675578 | 0.344246 | **0.303235** |
-| Male innings 1 | 0.693698 | 0.754022 | **0.525996** |
+| Female innings 1 | 0.691459 | 0.691732 | **0.510914** |
+| Female innings 2 | 0.675578 | 0.344246 | **0.273831** |
+| Male innings 1 | 0.693698 | 0.754022 | **0.495486** |
 | Male innings 2 | 0.688326 | 0.425597 | **0.292898** |
 
 The modelling feature workbook records every included feature, its definition,
@@ -110,7 +112,7 @@ untouched test split.
 
 The attribution reconciles numerically: each striker–bowler event pair sums to
 zero, the maximum player-total mismatch within a match is approximately
-`3.33e-16`, and the maximum innings telescoping error is approximately
+`3.61e-16`, and the maximum innings telescoping error is approximately
 `2.22e-16`.
 
 ## 7. Interpretation and limitations

@@ -27,6 +27,18 @@
       "n_jobs": -1,
       "random_state": 42,
       "track_overrides": {
+        "female_innings_1": {
+          "max_features": 0.25,
+          "n_estimators": 500
+        },
+        "female_innings_2": {
+          "max_features": 0.25,
+          "n_estimators": 500
+        },
+        "male_innings_1": {
+          "max_features": 0.25,
+          "n_estimators": 500
+        },
         "male_innings_2": {
           "max_features": 0.25,
           "n_estimators": 500
@@ -266,12 +278,12 @@
         "test_log_loss": {
           "logistic_regression": 0.6921492066101796,
           "naive_baseline": 0.6914586154506944,
-          "random_forest": 0.5223311158044511
+          "random_forest": 0.5109141662906221
         },
         "validation_log_loss": {
           "logistic_regression": 0.7558014576237554,
           "naive_baseline": 0.6918434164570622,
-          "random_forest": 0.5046225887040665
+          "random_forest": 0.48102657264610105
         }
       },
       "pre_innings_states": 1871,
@@ -280,10 +292,10 @@
         "bootstrap": true,
         "criterion": "log_loss",
         "max_depth": 14,
-        "max_features": "sqrt",
+        "max_features": 0.25,
         "max_samples": 0.8,
         "min_samples_leaf": 50,
-        "n_estimators": 200,
+        "n_estimators": 500,
         "n_jobs": -1,
         "random_state": 42
       },
@@ -295,8 +307,8 @@
         ],
         "metric": "validation_log_loss",
         "selected_model": "random_forest",
-        "selected_test_log_loss": 0.5223311158044511,
-        "selected_validation_log_loss": 0.5046225887040665
+        "selected_test_log_loss": 0.5109141662906221,
+        "selected_validation_log_loss": 0.48102657264610105
       },
       "source_delivery_rows": 235716,
       "source_feature_nulls": {
@@ -454,63 +466,63 @@
       "top_random_forest_importances": [
         {
           "feature": "current_run_rate",
-          "importance": 0.13287310640530414
+          "importance": 0.16211275796796534
         },
         {
           "feature": "bowling_team_prior_matches",
-          "importance": 0.06783836373717954
+          "importance": 0.0945433315842718
         },
         {
           "feature": "bowling_team_prior_ewm_win_rate",
-          "importance": 0.06642486346881298
+          "importance": 0.08398251175346863
         },
         {
           "feature": "bowling_team_prior_win_rate",
-          "importance": 0.06254354561261495
+          "importance": 0.07356356155269081
         },
         {
           "feature": "batting_team_prior_ewm_win_rate",
-          "importance": 0.05298782851861564
+          "importance": 0.0734145828263279
         },
         {
           "feature": "batting_team_prior_win_rate",
-          "importance": 0.047849647909773425
-        },
-        {
-          "feature": "innings_score",
-          "importance": 0.039643706152473236
-        },
-        {
-          "feature": "runs_prev_10_events",
-          "importance": 0.033363836282421934
+          "importance": 0.06321493535886642
         },
         {
           "feature": "batting_team_prior_matches",
-          "importance": 0.031997019776692656
+          "importance": 0.05285645502493032
         },
         {
-          "feature": "bowling_team_Australia",
-          "importance": 0.02189798956181995
+          "feature": "venue_innings_prior_matches",
+          "importance": 0.027601706219166973
         },
         {
-          "feature": "wickets_remaining",
-          "importance": 0.021466991993273534
+          "feature": "runs_prev_10_events",
+          "importance": 0.024947853163071017
+        },
+        {
+          "feature": "venue_innings_prior_batting_win_rate",
+          "importance": 0.023632137822879543
+        },
+        {
+          "feature": "innings_score",
+          "importance": 0.02321974846548945
         },
         {
           "feature": "innings_wickets",
-          "importance": 0.020750541731929306
+          "importance": 0.01680624595118506
+        },
+        {
+          "feature": "wickets_remaining",
+          "importance": 0.016700295853586133
+        },
+        {
+          "feature": "bowling_team_Australia",
+          "importance": 0.015496608154924589
         },
         {
           "feature": "bowler_prior_legal_balls",
-          "importance": 0.02000399709475032
-        },
-        {
-          "feature": "bowler_prior_bowling_matches",
-          "importance": 0.01827160729017817
-        },
-        {
-          "feature": "non_striker_prior_strike_rate",
-          "importance": 0.017044244967993796
+          "importance": 0.011765597044815728
         }
       ],
       "train_imputation_medians": {
@@ -728,12 +740,12 @@
         "test_log_loss": {
           "logistic_regression": 0.3441808040091762,
           "naive_baseline": 0.6755780781597784,
-          "random_forest": 0.30323456970742185
+          "random_forest": 0.27383120791177235
         },
         "validation_log_loss": {
           "logistic_regression": 0.4297616384598453,
           "naive_baseline": 0.6766097604840655,
-          "random_forest": 0.2994590221922066
+          "random_forest": 0.281433567502162
         }
       },
       "pre_innings_states": 1871,
@@ -742,10 +754,10 @@
         "bootstrap": true,
         "criterion": "log_loss",
         "max_depth": 14,
-        "max_features": "sqrt",
+        "max_features": 0.25,
         "max_samples": 0.8,
         "min_samples_leaf": 50,
-        "n_estimators": 200,
+        "n_estimators": 500,
         "n_jobs": -1,
         "random_state": 42
       },
@@ -757,8 +769,8 @@
         ],
         "metric": "validation_log_loss",
         "selected_model": "random_forest",
-        "selected_test_log_loss": 0.30323456970742185,
-        "selected_validation_log_loss": 0.2994590221922066
+        "selected_test_log_loss": 0.27383120791177235,
+        "selected_validation_log_loss": 0.281433567502162
       },
       "source_delivery_rows": 200554,
       "source_feature_nulls": {
@@ -920,64 +932,64 @@
       ],
       "top_random_forest_importances": [
         {
-          "feature": "required_run_rate",
-          "importance": 0.18193348117023778
+          "feature": "run_rate_differential",
+          "importance": 0.2526330964850093
         },
         {
-          "feature": "run_rate_differential",
-          "importance": 0.16824169284116586
+          "feature": "required_run_rate",
+          "importance": 0.22483097925167392
         },
         {
           "feature": "target_runs",
-          "importance": 0.10947943108297821
+          "importance": 0.08809924045689285
         },
         {
           "feature": "runs_to_win",
-          "importance": 0.06755534617057175
+          "importance": 0.04698188166791504
         },
         {
           "feature": "current_run_rate",
-          "importance": 0.03239974559970681
-        },
-        {
-          "feature": "target_progress",
-          "importance": 0.03221309786980755
-        },
-        {
-          "feature": "wickets_remaining",
-          "importance": 0.02966221117505712
-        },
-        {
-          "feature": "innings_wickets",
-          "importance": 0.029284090061991536
-        },
-        {
-          "feature": "bowling_team_prior_ewm_win_rate",
-          "importance": 0.02011219583748238
-        },
-        {
-          "feature": "bowling_team_prior_win_rate",
-          "importance": 0.015923524590697374
-        },
-        {
-          "feature": "batting_team_prior_win_rate",
-          "importance": 0.015724671693358713
-        },
-        {
-          "feature": "non_striker_prior_strike_rate",
-          "importance": 0.015439624178095766
-        },
-        {
-          "feature": "striker_prior_boundary_ball_rate",
-          "importance": 0.015113973552607211
-        },
-        {
-          "feature": "striker_prior_batting_average",
-          "importance": 0.014869438029916367
+          "importance": 0.028894217747657696
         },
         {
           "feature": "batting_team_prior_matches",
-          "importance": 0.01485159557436392
+          "importance": 0.023791202393332843
+        },
+        {
+          "feature": "innings_wickets",
+          "importance": 0.022122043214382933
+        },
+        {
+          "feature": "wickets_remaining",
+          "importance": 0.020705305709537346
+        },
+        {
+          "feature": "target_progress",
+          "importance": 0.02063271112356961
+        },
+        {
+          "feature": "bowling_team_prior_ewm_win_rate",
+          "importance": 0.0179566064639238
+        },
+        {
+          "feature": "batting_team_prior_win_rate",
+          "importance": 0.01680464150037437
+        },
+        {
+          "feature": "bowling_team_prior_win_rate",
+          "importance": 0.0166619879508518
+        },
+        {
+          "feature": "batting_team_prior_ewm_win_rate",
+          "importance": 0.015024560812218373
+        },
+        {
+          "feature": "striker_prior_boundary_ball_rate",
+          "importance": 0.01469355351140018
+        },
+        {
+          "feature": "non_striker_prior_strike_rate",
+          "importance": 0.014187041450081745
         }
       ],
       "train_imputation_medians": {
@@ -1183,12 +1195,12 @@
         "test_log_loss": {
           "logistic_regression": 0.7519959412582594,
           "naive_baseline": 0.693698464599184,
-          "random_forest": 0.5259963198993383
+          "random_forest": 0.4954863535403596
         },
         "validation_log_loss": {
           "logistic_regression": 0.6071321013773474,
           "naive_baseline": 0.6925065061839741,
-          "random_forest": 0.5744282273460074
+          "random_forest": 0.5635996493126053
         }
       },
       "pre_innings_states": 3104,
@@ -1197,10 +1209,10 @@
         "bootstrap": true,
         "criterion": "log_loss",
         "max_depth": 14,
-        "max_features": "sqrt",
+        "max_features": 0.25,
         "max_samples": 0.8,
         "min_samples_leaf": 50,
-        "n_estimators": 200,
+        "n_estimators": 500,
         "n_jobs": -1,
         "random_state": 42
       },
@@ -1212,8 +1224,8 @@
         ],
         "metric": "validation_log_loss",
         "selected_model": "random_forest",
-        "selected_test_log_loss": 0.5259963198993383,
-        "selected_validation_log_loss": 0.5744282273460074
+        "selected_test_log_loss": 0.4954863535403596,
+        "selected_validation_log_loss": 0.5635996493126053
       },
       "source_delivery_rows": 382777,
       "source_feature_nulls": {
@@ -1371,63 +1383,63 @@
       "top_random_forest_importances": [
         {
           "feature": "current_run_rate",
-          "importance": 0.1467644600428884
-        },
-        {
-          "feature": "batting_team_prior_ewm_win_rate",
-          "importance": 0.05484795345712363
+          "importance": 0.16414160225634353
         },
         {
           "feature": "bowling_team_prior_matches",
-          "importance": 0.054061449390295904
+          "importance": 0.08240812026089937
         },
         {
-          "feature": "bowling_team_prior_ewm_win_rate",
-          "importance": 0.0537318403840828
-        },
-        {
-          "feature": "innings_score",
-          "importance": 0.05219748593420392
-        },
-        {
-          "feature": "bowling_team_prior_win_rate",
-          "importance": 0.04649768542477445
-        },
-        {
-          "feature": "batting_team_prior_win_rate",
-          "importance": 0.042054873620310226
+          "feature": "batting_team_prior_ewm_win_rate",
+          "importance": 0.07585554751322597
         },
         {
           "feature": "batting_team_prior_matches",
-          "importance": 0.039095965922260334
+          "importance": 0.07201442150662524
         },
         {
-          "feature": "runs_prev_10_events",
-          "importance": 0.036356049469109995
+          "feature": "bowling_team_prior_ewm_win_rate",
+          "importance": 0.06864940343353797
         },
         {
-          "feature": "innings_wickets",
-          "importance": 0.029604926222688045
+          "feature": "bowling_team_prior_win_rate",
+          "importance": 0.05962412654884638
         },
         {
-          "feature": "wickets_remaining",
-          "importance": 0.029515183815058497
+          "feature": "batting_team_prior_win_rate",
+          "importance": 0.05303965332232339
         },
         {
-          "feature": "non_striker_prior_boundary_ball_rate",
-          "importance": 0.02070026058926791
-        },
-        {
-          "feature": "striker_prior_boundary_ball_rate",
-          "importance": 0.01924876218384676
+          "feature": "innings_score",
+          "importance": 0.035426157540927955
         },
         {
           "feature": "venue_innings_prior_matches",
-          "importance": 0.018822021495044295
+          "importance": 0.030372733706585605
         },
         {
-          "feature": "striker_prior_strike_rate",
-          "importance": 0.016904665019307038
+          "feature": "venue_innings_prior_batting_win_rate",
+          "importance": 0.0279592582105903
+        },
+        {
+          "feature": "wickets_remaining",
+          "importance": 0.024481335741565084
+        },
+        {
+          "feature": "runs_prev_10_events",
+          "importance": 0.02435357659279542
+        },
+        {
+          "feature": "innings_wickets",
+          "importance": 0.02426353630824386
+        },
+        {
+          "feature": "non_striker_prior_boundary_ball_rate",
+          "importance": 0.011967536556485194
+        },
+        {
+          "feature": "non_striker_prior_balls_faced",
+          "importance": 0.011584451021336544
         }
       ],
       "train_imputation_medians": {
