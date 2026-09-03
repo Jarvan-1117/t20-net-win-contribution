@@ -112,7 +112,7 @@ untouched test split.
 
 The attribution reconciles numerically: each striker–bowler event pair sums to
 zero, the maximum player-total mismatch within a match is approximately
-`3.61e-16`, and the maximum innings telescoping error is approximately
+`3.33e-16`, and the maximum innings telescoping error is approximately
 `2.22e-16`.
 
 ## 7. Interpretation and limitations

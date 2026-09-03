@@ -92,5 +92,6 @@ normal Git history. Source SHA-256 hashes are stored in
 [`data/raw/manifest.sha256`](data/raw/manifest.sha256). Keep the source files
 immutable and write derived data only to `data/interim/` or `data/processed/`.
 
-Confirm the dataset's redistribution licence before making the repository public
-or sharing the source data.
+The raw source data is not redistributed through this repository. Anyone running
+the analysis must obtain an authorised copy separately and verify it against the
+tracked checksums.

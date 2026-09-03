@@ -99,7 +99,7 @@ dismissals）采用同一 baseline striker–bowler interaction rule。主要球
 
 **结果：** 生成 1,156,215 个逐球 NWC 记录、102,924 个 player-match 记录和
 2,651 个 test-split 球员汇总。逐球配对和为 0；单场球员总和最大误差为
-`3.61e-16`；逐局概率变化核对最大误差为 `2.22e-16`，均为浮点精度残差。
+`3.33e-16`；逐局概率变化核对最大误差为 `2.22e-16`，均为浮点精度残差。
 
 **限制：** 原始数据没有接球者或制造 run-out 的守场员身份，因此此版本是零和的
 striker–bowler interaction metric，不是完整的 fielding 或因果归因模型。
